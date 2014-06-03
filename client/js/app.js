@@ -1,1 +1,1 @@
-// APPLICATION CODE GOES HERE
+// App code goes here
