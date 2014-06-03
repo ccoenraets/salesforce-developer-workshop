@@ -10,7 +10,7 @@ if (window.location.hash) {
         var splitter = param.split('=');
         response[splitter[0]] = splitter[1];
     });
-    window.opener.loginDialogCallback(response);
+    window.opener.oauthCallback(response);
     window.close();
 }
 
