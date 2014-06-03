@@ -1,0 +1,19 @@
+<html>
+<body>
+<script>
+
+if (window.location.hash) {
+    var message = decodeURIComponent(window.location.hash.substr(1)),
+        params = message.split('&'),
+        response = {};
+    params.forEach(function (param) {
+        var splitter = param.split('=');
+        response[splitter[0]] = splitter[1];
+    });
+    window.opener.loginDialogCallback(response);
+    window.close();
+}
+
+</script>
+</body>
+</html>
