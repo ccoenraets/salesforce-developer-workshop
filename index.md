@@ -37,7 +37,7 @@ In this workshop, you learn create a conference management application named MyC
 
 - [Module 8: Creating a Controller Extension](Creating-a-Controller-Extension.html)
 
-  In this module, you enhance the Visualforce page you built in module 4: you create a controller extension that lets users upload speaker pictures.
+  In this module, you enhance the Visualforce page you built in module 4: you create a controller extension that allows users to upload speaker pictures.
 
 - [Module 9: Using Javascript in Visualforce Pages](Using-JavaScript-in-Visualforce-Pages.html)
 

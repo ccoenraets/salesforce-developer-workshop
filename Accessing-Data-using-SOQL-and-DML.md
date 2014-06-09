@@ -2,7 +2,9 @@
 layout: module
 title: Module 5&#58; Accessing Data using SOQL and DML
 ---
-In this module, you use the Developer Console to explore the SOQL and DML (Data Manipulation Language) syntax.
+In this module, you use the Developer Console to familiarize yourself with SOQL (Salesforce Object Query Language) 
+and DML (Data Manipulation Language). In the next modules, you'll use SOQL and DML statements in Apex classes and 
+triggers.
 
 ### Step 1: Execute SOQL statements
 
@@ -54,3 +56,7 @@ In this module, you use the Developer Console to explore the SOQL and DML (Data 
   session.Level__c = 'Intermediate';
   update session;
   ```
+
+### Additional Resources
+
+- [SOQL and SOSL Reference](http://www.salesforce.com/us/developer/docs/soql_sosl/index_Left.htm)

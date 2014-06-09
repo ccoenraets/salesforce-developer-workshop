@@ -10,23 +10,23 @@ In this module, you create and execute a batch process to send reminder emails t
 
 1. Make the class **global**, implement the **Batchable** interface, and define the three methods of the Batchable interface:
 
-  ```
-  global class SendReminderEmail implements Database.Batchable<sObject> {
-
-      global Database.QueryLocator start(Database.BatchableContext bc) {
-
-      }
-
-      global void execute(Database.BatchableContext bc, List<Speaker__c> scope) {
-
-      }
-
-      global void finish(Database.BatchableContext bc) {
-
-      }
-
-  }
-  ```
+    ```
+    global class SendReminderEmail implements Database.Batchable<sObject> {
+    
+        global Database.QueryLocator start(Database.BatchableContext bc) {
+        
+        }
+        
+        global void execute(Database.BatchableContext bc, List<Speaker__c> scope) {
+        
+        }
+        
+        global void finish(Database.BatchableContext bc) {
+        
+        }
+    
+    }
+    ```
 
 1. Declare three instance variables to store the query, the email subject, and the email body:
 
@@ -38,31 +38,31 @@ In this module, you create and execute a batch process to send reminder emails t
 
 1. Define a **constructor** implemented as follows:
 
-  ```
-  global SendReminderEmail(String query, String subject, String body) {
-      this.query = query;
-      this.subject = subject;
-      this.body = body;
-  }
-  ```
+    ```
+    global SendReminderEmail(String query, String subject, String body) {
+        this.query = query;
+        this.subject = subject;
+        this.body = body;
+    }
+    ```
 
 1. Implement the **start()** method as follows:
 
-  ```
-  global Database.QueryLocator start(Database.BatchableContext bc) {
-      return Database.getQueryLocator(query);
-  }
-  ```
+    ```
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+        return Database.getQueryLocator(query);
+    }
+    ```
 
 1. Implement the **execute()** method as follows:
 
-  ```
-  global void execute(Database.BatchableContext bc, List<Speaker__c> scope) {
-      for (Speaker__c speaker : scope) {
-        EmailManager.sendMail(speaker.Email__c, this.subject, this.body);
-      }
-  }
-  ```
+    ```
+    global void execute(Database.BatchableContext bc, List<Speaker__c> scope) {
+        for (Speaker__c speaker : scope) {
+            EmailManager.sendMail(speaker.Email__c, this.subject, this.body);
+        }
+    }
+    ```
 
 1. Save the file.
 
@@ -75,11 +75,11 @@ In this module, you create and execute a batch process to send reminder emails t
 
 1. Type the following Apex code:
 
-  ```
-  String q = 'SELECT First_Name__c, Last_Name__c, Email__c FROM Speaker__c WHERE Email__c != null';
-  SendSpeakerReminder batch = new SendSpeakerReminder(q, 'Final Reminder', 'The conference is next Monday');
-  Database.executeBatch(batch);
-  ```
+    ```
+    String q = 'SELECT First_Name__c, Last_Name__c, Email__c FROM Speaker__c WHERE Email__c != null';
+    SendSpeakerReminder batch = new SendSpeakerReminder(q, 'Final Reminder', 'The conference starts next Monday');
+    Database.executeBatch(batch);
+    ```
 
 1. Click **Execute**
 

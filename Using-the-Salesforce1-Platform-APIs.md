@@ -4,7 +4,7 @@ title: Module 10&#58; Using the Salesforce1 Platform APIs
 ---
 In this module, you create an application that runs outside your Salesforce instance: it uses OAuth to authenticate with Salesforce, and the REST APIs to access Salesforce data.
 
-![](https://github.com/ccoenraets/salesforce-developer-workshop/raw/master/images/api.jpg)
+![](images/api.jpg)
 
 ### Step 1: Create a Connected App
 
@@ -12,7 +12,7 @@ In this module, you create an application that runs outside your Salesforce inst
 
 1. In the Connected Apps section, click **New**, and define the Connected App as follows:
 
-![](https://github.com/ccoenraets/salesforce-developer-workshop/raw/master/images/connected-app.jpg)
+    ![](images/connected-app.jpg)
 
 1. Click **Save**.
 
@@ -65,27 +65,29 @@ In this module, you create an application that runs outside your Salesforce inst
 
 1. Declare a function named **login()** implemented as follows:
 
-  ```
-  function login() {
-      var url = loginUrl + 'services/oauth2/authorize?display=popup&response_type=token' +
-          '&client_id=' + encodeURIComponent(clientId) +
-          '&redirect_uri=' + encodeURIComponent(redirectURI);
-      window.open(url);
-  }
-  ```
+    ```
+    function login() {
+        var url = loginUrl + 'services/oauth2/authorize?display=popup&response_type=token'
+                    + '&client_id=' + encodeURIComponent(clientId)
+                    + '&redirect_uri=' + encodeURIComponent(redirectURI);
+        window.open(url);
+    }
+    ```
 
 1. Declare a function named **oauthCallback()** implemented as follows:
 
-  ```
-  function oauthCallback(response) {
-    if (response && response.access_token) {
-        client.setSessionToken(response.access_token, apiVersion, response.instance_url);
-        console.log('OAuth authentication succeeded');
-    } else {
-        alert("AuthenticationError: No Token");
+    ```
+    function oauthCallback(response) {
+        if (response && response.access_token) {
+            client.setSessionToken(response.access_token, 
+                                   apiVersion, 
+                                   response.instance_url);
+            console.log('OAuth authentication succeeded');
+        } else {
+            alert("AuthenticationError: No Token");
+        }
     }
-  }
-  ```
+    ```
 
 1. Invoke the login() function as the last line of the app.js file:
 
@@ -104,24 +106,24 @@ In this module, you create an application that runs outside your Salesforce inst
 
 1. In app.js, declare a function named **getSessions()** implemented as follows:
 
-  ```
-  function getSessions() {
-    var soql = "SELECT Id, Name, Session_Date__c FROM Session__c",
-        html = '';
-    client.query(soql,
-        function (data) {
-            var sessions = data.records;
-            for (var i=0; i<sessions.length; i++) {
-                html += '<li class="table-view-cell">' + sessions[i].Name + '</li>';
-            }
-            $('.session-list').html(html);
-        },
-        function (error) {
-            alert("Error: " + JSON.stringify(error));
-        });
-    return false;
-  }
-  ```
+    ```
+    function getSessions() {
+        var soql = "SELECT Id, Name, Session_Date__c FROM Session__c",
+            html = '';
+        client.query(soql,
+            function (data) {
+                var sessions = data.records;
+                for (var i=0; i<sessions.length; i++) {
+                    html += '<li class="table-view-cell">' + sessions[i].Name + '</li>';
+                }
+                $('.session-list').html(html);
+            },
+            function (error) {
+                alert("Error: " + JSON.stringify(error));
+            });
+        return false;
+    }
+    ```
 
 1. Modify the oauthCallback() function to invoke getSessions() when the user has been successfully authenticated.
 

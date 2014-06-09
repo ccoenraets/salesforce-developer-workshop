@@ -6,9 +6,9 @@ In this module, you create the custom objects that make up the data model for th
 
 - A conference **Session** object
 - A **Speaker** object
-- A **Session_Speaker** object used to model the many-to-many relationship between Session and Speaker: A Session can have one or many speakers, and a speaker can have one to many sessions
+- A **Session_Speaker** object used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions
 
-![](https://github.com/ccoenraets/salesforce-developer-workshop/raw/master/images/schema.jpg)
+![](images/schema.jpg)
 
 ### Step 1: Create the Conference Session Object
 

@@ -9,6 +9,7 @@ In this module, you create a custom controller with a method that returns a list
 ### Step 1: Create the Hotel Object
 
 1. In **Setup**, select **Build** > **Create** > **Objects**
+
 2. Click **New Custom Object**, and define the Hotel Object as follows:
   - Label: **Hotel**
   - Plural Label: **Hotels**
@@ -45,17 +46,17 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Implement the class as follows:
 
-  ```
-  global with sharing class HotelRemoter {
-
-      @RemoteAction
-      global static List<Hotel__c> findAll() {
-          String soql = 'SELECT Id, Name, Location__Latitude__s, Location__Longitude__s FROM Hotel__c';
-          return(database.Query(soql));
-      }
-
-  }
-  ```
+    ```
+    global with sharing class HotelRemoter {
+    
+        @RemoteAction
+        global static List<Hotel__c> findAll() {
+            return [SELECT Id, Name, Location__Latitude__s, Location__Longitude__s 
+                        FROM Hotel__c];
+        }
+    
+    }
+    ```
 
 1. Save the file  
 
@@ -80,8 +81,8 @@ In this module, you create a custom controller with a method that returns a list
 
     function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(37.784173, -122.401557),
-          zoom: 15
+            center: new google.maps.LatLng(37.784173, -122.401557),
+            zoom: 15
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     }
@@ -99,7 +100,7 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Save the file
 
-1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser.
+1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser
 
 ### Step 4: Display the Hotels on the Map
 
@@ -111,22 +112,26 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Define a function named loadHotels() implemented as follows (right after the initilize() function):
 
-  ```
-  function loadHotels() {
-		Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.HotelRemoter.findAll}',
-			function(result, event){
+    ```
+    function loadHotels() {
+        Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.HotelRemoter.findAll}',
+            function(result, event){
                 if (event.status) {
                     for (var i=0; i<result.length; i++) {
-                      addMarker(result[i].Id, result[i].Name, result[i].Location__Latitude__s, result[i].Location__Longitude__s);
+                        var id = result[i].Id;
+                        var name = result[i].Name;
+                        var lat = result[i].Location__Latitude__s;
+                        var lng = result[i].Location__Longitude__s;
+                        addMarker(id, name, lat, lng);
                     }
                 } else {
-					alert(event.message);
+                    alert(event.message);
                 }
             },
-			{escape: true}
-		);
-  }
-  ```
+            {escape: true}
+        );
+    }
+    ```
 
 1. Define the addMarker() function implemented as follows:
 

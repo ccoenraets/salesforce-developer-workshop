@@ -1,11 +1,19 @@
 img {
     max-width: 100%;
+    border: solid 1px #eee;
 }
+
+
 
 h1{
     font-size: 32px;
 }
 
+
+blockquote {
+    font-size: inherit;
+    line-height: inherit;
+}
 .btn-lg {
     border-radius: 2px;
     background-color: #009CDF;
