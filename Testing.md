@@ -2,8 +2,7 @@
 layout: module
 title: Module 11&#58; Testing
 ---
-In this module, you write tests for RejectDoubleBooking trigger you created in module 6.
-
+In this module, you write tests for the RejectDoubleBooking trigger you created in module 6.
 
 ### Steps
 
@@ -18,7 +17,7 @@ In this module, you write tests for RejectDoubleBooking trigger you created in m
     }
     ```
 
-1. Add a TestSingleBooking() method to make sure the trigger does not prevent a valid speaker booking:
+1. Add a **TestSingleBooking()** method to make sure the trigger does not prevent a valid speaker booking:
 
     ```
     static testmethod void TestSingleBooking() {
@@ -46,7 +45,7 @@ In this module, you write tests for RejectDoubleBooking trigger you created in m
 
 1. Click the **Tests** tab at the bottom of the code editor
 
-1. Add a TestDoubleBooking() method to make sure trigger actually rejects double bookings:
+1. Add a **TestDoubleBooking()** method to make sure trigger actually rejects double bookings:
 
     ```
     static testmethod void TestDoubleBooking() {

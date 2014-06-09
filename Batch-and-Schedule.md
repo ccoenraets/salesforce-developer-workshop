@@ -8,7 +8,7 @@ In this module, you create and execute a batch process to send reminder emails t
 
 1. In the Developer Console, select **File** > **New** > **Apex Class**, specify **SendReminderEmail** as the class name and click **OK**
 
-1. Make the class **global**, implement the **Batchable** interface, and define the three methods of the Batchable interface:
+1. Make the class **global**, implement the **Batchable** interface, and define the three methods of the interface:
 
     ```
     global class SendReminderEmail implements Database.Batchable<sObject> {
