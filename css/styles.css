@@ -1,3 +1,18 @@
+img {
+    max-width: 100%;
+}
+
+.btn-lg {
+    border-radius: 2px;
+    background-color: #009CDF;
+}
+
+.jumbotron {
+    margin-top: -20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
 .navbar {
     background-color: #01344e;
 }
@@ -9,7 +24,24 @@
 
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-brand:hover {
-    color: #2ac2ff;
+    /*color: #2ac2ff;*/
+    color: #009CDF;
+}
+
+.right-nav {
+    padding-top: 20px;
+}
+
+.right-nav ol {
+    margin: 10px 10px 0 40px;
+}
+
+.right-nav ol > li {
+    padding: 4px 0;
+}
+
+
+.list-group-item {
 }
 
 h3 {
@@ -31,3 +63,4 @@ li>ul>li {
     padding-top: 20px;
     border-top: solid 1px #eee;
 }
+

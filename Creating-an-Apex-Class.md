@@ -1,5 +1,5 @@
 ---
-layout: bootstrap
+layout: module
 title: Module 4&#58; Creating an Apex Class
 ---
 In this module, you create an EmailManager class that is used to send confirmation emails to the conference speakers.
@@ -14,20 +14,20 @@ In this module, you create an EmailManager class that is used to send confirmati
 
 2. Implement the class as follows:
 
-    ```
-    public class EmailManager{
-    
-        public void sendMail(String address, String subject, String body) {
-            Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
-            String[] toAddresses = new String[] {address};
-            mail.setToAddresses(toAddresses);
-            mail.setSubject(subject);
-            mail.setPlainTextBody(body);
-            Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
-        }
-    
+  ```
+  public class EmailManager{
+
+    public void sendMail(String address, String subject, String body) {
+        Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
+        String[] toAddresses = new String[] {address};
+        mail.setToAddresses(toAddresses);
+        mail.setSubject(subject);
+        mail.setPlainTextBody(body);
+        Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
     }
-    ```
+
+  }
+  ```
 
 1. Click **File** > **Save** to save the file.  
 
