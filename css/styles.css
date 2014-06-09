@@ -2,6 +2,10 @@ img {
     max-width: 100%;
 }
 
+h1{
+    font-size: 32px;
+}
+
 .btn-lg {
     border-radius: 2px;
     background-color: #009CDF;
@@ -24,7 +28,7 @@ img {
 
 .navbar-default .navbar-nav>li>a:hover,
 .navbar-default .navbar-brand:hover {
-    /*color: #2ac2ff;*/
+    color: #2ac2ff;
     color: #009CDF;
 }
 

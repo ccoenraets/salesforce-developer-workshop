@@ -2,7 +2,11 @@
 layout: module
 title: Module 2&#58; Creating the Data Model
 ---
-In this module, you create the custom objects that make up the data model for the MyConference application.
+In this module, you create the custom objects that make up the data model for the MyConference application:
+
+- A conference **Session** object
+- A **Speaker** object
+- A **Session_Speaker** object used to model the many-to-many relationship between Session and Speaker: A Session can have one or many speakers, and a speaker can have one to many sessions
 
 ![](https://github.com/ccoenraets/salesforce-developer-workshop/raw/master/images/schema.jpg)
 
@@ -40,7 +44,7 @@ In this module, you create the custom objects that make up the data model for th
 1. Create a **Level** field defined as follows:
   - Data Type: **Picklist**
   - Field Label: **Level**
-  - Values: **Beginner**, **Intermediate**, **Advanced** (specify each value on its own row).
+  - Values: **Beginner**, **Intermediate**, **Advanced** (specify each value on its own row)
   - Field Name: **Level**
 
   Click **Next**, **Next**, **Save**
@@ -48,7 +52,8 @@ In this module, you create the custom objects that make up the data model for th
 ### Step 2: Create the Speaker Object
 
 1. In Setup, select **Build** > **Create** > **Objects**
-1. Click **New Custom Object**, and define the Speaker object as follows:
+
+1. Click **New Custom Object**, and define the Speaker object as follows (accept the default values for the properties that are not mentioned below):
   - Label: **Speaker**
   - Plural Label: **Speakers**
   - Object Name: **Speaker**
@@ -93,7 +98,7 @@ In this module, you create the custom objects that make up the data model for th
 
 1. In Setup, select **Build** > **Create** > **Objects**
 
-1. Click **New Custom Object**, and define the "Session_Speaker" object as follows:
+1. Click **New Custom Object**, and define the **Session_Speaker** object as follows:
   - Label: **Session Speaker**
   - Plural Label: **Session Speakers**
   - Object Name: **Session_Speaker**
@@ -112,7 +117,7 @@ In this module, you create the custom objects that make up the data model for th
 
   Click **Next**, **Next**, **Next**, set the Related List Label to "**Speakers**" and click **Save & New**
 
-1. In the **Custom Fields & relationships** section, click **New**, and create a **Speaker** field defined as follows:
+1. Create a **Speaker** field defined as follows:
   - Data Type: **Master-Detail Relationship**
   - Related To: **Speaker**
   - Field Label: **Speaker**
@@ -128,4 +133,4 @@ In this module, you create the custom objects that make up the data model for th
 
 1. Check **Session**, **Speaker**, and **Session Speaker**
 
-1. Examine the MyConference data model
+1. Examine the MyConference data model. Rearrange the view as needed.

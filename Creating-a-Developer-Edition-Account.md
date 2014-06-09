@@ -6,13 +6,13 @@ In this module, you create a Developer Edition Account that provides you with a 
 
 ### Steps
 
-1. Open a browser and access the following URL: http://developer.salesforce.com/join
+1. Open a browser and access the following URL: [http://developer.salesforce.com/join](http://developer.salesforce.com/join)
 
 2. Fill in the signup form:
-  - Enter your First Name and Last Name.
-  - For **Email**, enter an email address you can access now (you will need to open an activation email).
-  - For **Username**, specify a unique user name in the form of an email address. for example: **firsname.lastname@s1workshop.com** (The user name doesn't have to be an existing email address: it is is not used to send you emails).
-  - Enter the captcha value, check the Master Subscription Agreement checkbox and click the **Sign Me Up** button.
+  - Enter your First Name and Last Name
+  - For **Email**, enter an email address you have access to (you will need to open an activation email)
+  - For **Username**, specify a unique user name in the form of an email address. for example: **firsname.lastname@s1workshop.com** (The user name doesn't have to be an existing email address: it is is not used to send you emails)
+  - Enter the captcha value, check the Master Subscription Agreement checkbox and click the **Sign Me Up** button
 
 3. Check your email. You will receive an activation email for your Developer Edition account.
 
