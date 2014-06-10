@@ -6,6 +6,10 @@ In this module, you create an application that runs outside your Salesforce inst
 
 ![](images/api.jpg)
 
+### Requirement
+
+You need Node.js to perform the exercises this module. If you don't already have Node.js installed on your system, you can install it [here](http://nodejs.org/).
+
 ### Step 1: Create a Connected App
 
 1. In Setup, click **Build** > **Create** > **Apps**
@@ -18,7 +22,7 @@ In this module, you create an application that runs outside your Salesforce inst
 
 ### Step 2: Start the Node.js server
 
-1. Download and unzip [this file](https://github.com/ccoenraets/salesforce-developer-workshop/archive/master.zip) or clone [this repository](https://github.com/ccoenraets/salesforce-developer-workshop)
+1. Download and unzip [this file](https://github.com/ccoenraets/salesforce-developer-workshop/archive/master.zip), or clone [this repository](https://github.com/ccoenraets/salesforce-developer-workshop)
 
 1. Open Terminal (Mac) or a Command prompt (Windows)
 

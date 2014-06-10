@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d642e41-9130-44a6-ba4a-efc2cb5d33ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Accessing-Data-using-SOQL-and-DML.md" afterPath="$PROJECT_DIR$/Accessing-Data-using-SOQL-and-DML.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Creating-Triggers.md" afterPath="$PROJECT_DIR$/Creating-Triggers.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Creating-a-Controller-Extension.md" afterPath="$PROJECT_DIR$/Creating-a-Controller-Extension.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Creating-a-Visualforce-Page.md" afterPath="$PROJECT_DIR$/Creating-a-Visualforce-Page.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Creating-an-Apex-Class.md" afterPath="$PROJECT_DIR$/Creating-an-Apex-Class.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Creating-the-Application.md" afterPath="$PROJECT_DIR$/Creating-the-Application.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Creating-the-Data-Model.md" afterPath="$PROJECT_DIR$/Creating-the-Data-Model.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md" afterPath="$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md" />
     </list>
     <ignored path="salesforce-developer-workshop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -57,10 +51,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Creating-a-Controller-Extension.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Creating-a-Controller-Extension.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Creating-a-Controller-Extension.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8868243" vertical-offset="0" max-vertical-offset="2430">
+            <state vertical-scroll-proportion="-38.88889" vertical-offset="0" max-vertical-offset="2430">
               <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
               <folding />
             </state>
@@ -70,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Using-the-Salesforce1-Platform-APIs.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Using-the-Salesforce1-Platform-APIs.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-34.074074" vertical-offset="940" max-vertical-offset="2175">
-              <caret line="124" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.30405405" vertical-offset="0" max-vertical-offset="2235">
+              <caret line="24" column="114" selection-start-line="24" selection-start-column="114" selection-end-line="24" selection-end-column="114" />
               <folding />
             </state>
           </provider>
@@ -197,7 +191,6 @@
         <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/index.md" />
         <option value="$PROJECT_DIR$/Using-JavaScript-in-Visualforce-Pages.md" />
-        <option value="$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md" />
         <option value="$PROJECT_DIR$/Testing.md" />
         <option value="$PROJECT_DIR$/Batch-and-Schedule.md" />
         <option value="$PROJECT_DIR$/Creating-the-Data-Model.md" />
@@ -207,6 +200,7 @@
         <option value="$PROJECT_DIR$/Creating-Triggers.md" />
         <option value="$PROJECT_DIR$/Creating-a-Visualforce-Page.md" />
         <option value="$PROJECT_DIR$/Creating-a-Controller-Extension.md" />
+        <option value="$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md" />
       </list>
     </option>
   </component>
@@ -395,7 +389,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2682" y="22" width="1318" height="1367" extended-state="1" />
+    <frame x="2682" y="22" width="1318" height="1367" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -628,17 +622,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-34.074074" vertical-offset="940" max-vertical-offset="2175">
-          <caret line="124" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Testing.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-26.11111" vertical-offset="0" max-vertical-offset="1260">
@@ -729,8 +712,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Creating-a-Controller-Extension.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8868243" vertical-offset="0" max-vertical-offset="2430">
+        <state vertical-scroll-proportion="-38.88889" vertical-offset="0" max-vertical-offset="2430">
           <caret line="70" column="19" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30405405" vertical-offset="0" max-vertical-offset="2235">
+          <caret line="24" column="114" selection-start-line="24" selection-start-column="114" selection-end-line="24" selection-end-column="114" />
           <folding />
         </state>
       </provider>
