@@ -4,7 +4,7 @@ title: Module 11&#58; Testing
 ---
 In this module, you write tests for the RejectDoubleBooking trigger you created in module 6.
 
-### Steps
+### Step 1: Create a Test Class
 
 1. In the Developer Console, select **File** > **New** > **Apex Class**, specify **TestRejectDoubleBooking** as the class name and click **OK**
 
@@ -16,6 +16,8 @@ In this module, you write tests for the RejectDoubleBooking trigger you created 
     
     }
     ```
+
+### Step 2: Add a Test Method to Test Single Bookings
 
 1. Add a **TestSingleBooking()** method to make sure the trigger does not prevent a valid speaker booking:
 
@@ -43,7 +45,12 @@ In this module, you write tests for the RejectDoubleBooking trigger you created 
 
 1. Click **Run Test** in the upper right corner of the code editor
 
-1. Click the **Tests** tab at the bottom of the code editor
+1. Click the **Tests** tab at the bottom of the code editor, and examine the test results.
+
+    ![](images/test1.jpg)
+
+
+### Step 3: Add a Test Method to Test Double Bookings
 
 1. Add a **TestDoubleBooking()** method to make sure trigger actually rejects double bookings:
 
@@ -75,4 +82,8 @@ In this module, you write tests for the RejectDoubleBooking trigger you created 
 
 1. Save the file  
 
-1. Click **Run Test** again and examine the results in the **Tests** tab
+1. Click **Run Test** in the upper right corner of the code editor
+
+1. Click the **Tests** tab at the bottom of the code editor, and examine the test results.
+
+    ![](images/test2.jpg)

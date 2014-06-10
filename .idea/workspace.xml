@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d642e41-9130-44a6-ba4a-efc2cb5d33ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md" afterPath="$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing.md" afterPath="$PROJECT_DIR$/Testing.md" />
     </list>
     <ignored path="salesforce-developer-workshop.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,10 +64,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Using-the-Salesforce1-Platform-APIs.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Using-the-Salesforce1-Platform-APIs.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7846284" vertical-offset="1306" max-vertical-offset="2520">
+            <state vertical-scroll-proportion="-34.407406" vertical-offset="1306" max-vertical-offset="2520">
               <caret line="149" column="7" selection-start-line="149" selection-start-column="7" selection-end-line="149" selection-end-column="7" />
               <folding />
             </state>
@@ -77,11 +77,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Testing.md" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Testing.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.11111" vertical-offset="0" max-vertical-offset="1260">
-              <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.9113176" vertical-offset="241" max-vertical-offset="1425">
+              <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -106,8 +106,8 @@
       <file leaf-file-name="Creating-the-Data-Model.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Creating-the-Data-Model.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.74074" vertical-offset="916" max-vertical-offset="2100">
-              <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+            <state vertical-scroll-proportion="-3.8888888" vertical-offset="0" max-vertical-offset="2100">
+              <caret line="7" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -191,7 +191,6 @@
         <option value="$PROJECT_DIR$/css/styles.css" />
         <option value="$PROJECT_DIR$/index.md" />
         <option value="$PROJECT_DIR$/Using-JavaScript-in-Visualforce-Pages.md" />
-        <option value="$PROJECT_DIR$/Testing.md" />
         <option value="$PROJECT_DIR$/Batch-and-Schedule.md" />
         <option value="$PROJECT_DIR$/Creating-the-Data-Model.md" />
         <option value="$PROJECT_DIR$/Creating-the-Application.md" />
@@ -201,6 +200,7 @@
         <option value="$PROJECT_DIR$/Creating-a-Visualforce-Page.md" />
         <option value="$PROJECT_DIR$/Creating-a-Controller-Extension.md" />
         <option value="$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md" />
+        <option value="$PROJECT_DIR$/Testing.md" />
       </list>
     </option>
   </component>
@@ -622,32 +622,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.11111" vertical-offset="0" max-vertical-offset="1260">
-          <caret line="47" column="32" selection-start-line="47" selection-start-column="32" selection-end-line="47" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Batch-and-Schedule.md">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.5555553" vertical-offset="0" max-vertical-offset="1380">
           <caret line="10" column="105" selection-start-line="10" selection-start-column="105" selection-end-line="10" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Creating-the-Data-Model.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.74074" vertical-offset="916" max-vertical-offset="2100">
-          <caret line="93" column="0" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -723,8 +701,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Using-the-Salesforce1-Platform-APIs.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7846284" vertical-offset="1306" max-vertical-offset="2520">
+        <state vertical-scroll-proportion="-34.407406" vertical-offset="1306" max-vertical-offset="2520">
           <caret line="149" column="7" selection-start-line="149" selection-start-column="7" selection-end-line="149" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Creating-the-Data-Model.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8888888" vertical-offset="0" max-vertical-offset="2100">
+          <caret line="7" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9113176" vertical-offset="241" max-vertical-offset="1425">
+          <caret line="88" column="20" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
           <folding />
         </state>
       </provider>
