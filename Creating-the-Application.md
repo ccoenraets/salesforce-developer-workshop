@@ -32,6 +32,8 @@ To create the Speakers tab:
 
 ### Step 2: Creating the App
 
+A Salesforce App is a group of Tabs that makes it easy for users to access a set of related features.
+
 1. In **Setup**, select **Build** > **Create** > **Apps**
 
 1. In the **Apps** section, click **New**
@@ -40,7 +42,7 @@ To create the Speakers tab:
 
 1. Enter **MyConference** for both the App Label and App Name, and click **Next**
 
-1. Accept the default logo and click **Next**
+1. Accept the default App Logo and click **Next**
 
 1. Add the **Sessions** and **Speakers** tabs to the **Selected Tabs** and click **Next**
 
@@ -48,13 +50,15 @@ To create the Speakers tab:
 
 1. Select **MyConference** in the App selector (upper right corner of the screen)
 
+> If the MyConference App doesn't appear in the App Selector, you probably forgot to assign it to the System Administrator profile. In Setup, select Build > Create > App, click Edit next to MyConference, check the System Administrator profile, and click Save.
+
 ### Step 3: Enter Sample Data
 
-1. Click the Sessions Tab, and add a few sample sessions
+1. Click the Sessions Tab, click **New**, and  add a few sample sessions
 
-1. Click the Speakers Tab, and add a few sample speakers
+1. Click the Speakers Tab, click **New**, and add a few sample speakers
 
-1. Assign speakers to sessions
+1. Click **New Session Speaker** to assign speakers to a session in the Session view, or sessions to a speaker in the Speaker view
 
 ### Step 4: Optimize the Session Page Layout
 
@@ -64,7 +68,7 @@ In this step, you optimize the Session details screen: to allow the user to easi
 
 1. In **Setup**, select **Build** > **Create** > **Objects**
 
-1. Click the **Session** object
+1. Click the **Session** link
 
 1. In the **Page Layouts** section, click **Edit** next to Session Layout
 
@@ -86,7 +90,7 @@ In this step, you optimize the Speaker details screen: to allow the user to easi
 
 1. In **Setup**, select **Build** > **Create** > **Objects**
 
-1. Click the **Speaker** object
+1. Click the **Speaker** link
 
 1. In the **Page Layouts** section, click **Edit** next to Speaker Layout
 
@@ -111,3 +115,14 @@ In this step, you optimize the Speaker lookup dialog to allow the user to easily
 1. Add **First Name** and **Last Name** to the **Selected Fields**
 
 1. Click **Save**
+
+### Step 7: Test the Application
+
+1. Click the Sessions tab, select a session and make sure the speaker list shows the speaker number, first name, and last name
+  
+1. Assign a new speaker to a session and make sure the speaker lookup dialog shows the speaker first name and last name
+  
+1. Click the Speakers tab, select a speaker and make sure the session list shows the session name and date
+
+> If the lists don't show the expected fields, you probably forgot to click the Save button in the Page Layout screen. Go back to steps 4 and 5, and make sure you click Save at the end. 
+  

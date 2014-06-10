@@ -26,14 +26,15 @@ You create another trigger that rejects double bookings of speakers.
                      Speaker__r.Email__c
                  FROM Session_Speaker__c WHERE Id=:newItem.Id];
             
-            String address = sessionSpeaker.Speaker__r.Email__c;
-            String subject = 'Speaker Confirmation';    
-            String message = 'Dear ' + sessionSpeaker.Speaker__r.First_Name__c + ',\n' +
-                'Your session "' + sessionSpeaker.Session__r.Name + ' on ' + 
-                sessionSpeaker.Session__r.Session_Date__c + ' is confirmed.\n\n' +
-                'Thanks for speaking at the conference!';
-
-            EmailManager.sendMail(address, subject, message);
+            if (sessionSpeaker.Speaker__r.Email__c != null) {
+                String address = sessionSpeaker.Speaker__r.Email__c;
+                String subject = 'Speaker Confirmation';    
+                String message = 'Dear ' + sessionSpeaker.Speaker__r.First_Name__c + 
+                    ',\nYour session "' + sessionSpeaker.Session__r.Name + ' on ' + 
+                    sessionSpeaker.Session__r.Session_Date__c + ' is confirmed.\n\n' +
+                    'Thanks for speaking at the conference!';
+                EmailManager.sendMail(address, subject, message);
+            }
         }
     
     }
@@ -79,3 +80,5 @@ You create another trigger that rejects double bookings of speakers.
 1. Test the trigger
   - Assign a speaker to a session scheduled at a time the speaker is available and make sure it still works
   - Assign a speaker to a session scheduled at the same time as another session the speaker is already assigned to: you should see the error message
+
+> RejectDoubleBooking is not sufficient to entirely prevent the double booking of speakers. For example, the user could change the date and time of a session in a way that creates a double booking for a speaker assigned to that session. You could create an additional trigger to take care of that situation.

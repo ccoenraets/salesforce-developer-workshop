@@ -2,7 +2,7 @@
 layout: module
 title: Module 8&#58; Creating a Controller Extension
 ---
-In this module, you enhance the Visualforce page you built in module 4: you create a controller extension that allows users to upload speaker pictures.
+In this module, you enhance the Visualforce page you built in module 7: you create a controller extension that allows users to upload speaker pictures.
 
 ![](images/upload.jpg)
 
@@ -53,16 +53,18 @@ In this step, you experiment with the mechanics of a controller extension. You c
     {!counter}
     ```
 
+1. Save the file
+
 1. Test the application
   - Click the Speakers tab, select a speaker, and click **Edit**
-  - Click the Increment button several times and watch the counter value displayed at the bottom of the page.
+  - Click the Increment button several times and watch the counter value displayed at the bottom of the page
 
 
 ### Step 2: Extend the Data Model
 
 In this step, you add two fields to the Speaker object: **Picture_Path** to store the location of the picture on the server, and **Picture**, a Formula field used to display the image in the Visualforce page.
 
-1. In **Setup**, select **Build** > **Create** > **Objects**, and click the **Speaker** object
+1. In **Setup**, select **Build** > **Create** > **Objects**, and click the **Speaker** link
 
 1. In the **Custom Fields & Relationships** section, click **New**, and create a **Picture_Path** field defined as follows:
   - Data Type: **Text**
@@ -77,7 +79,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
   - Field Label: **Picture**
   - Field Name: **Picture**
   - Formula Return Type: **Text**
-  - Formula: **IMAGE(Picture_Path__c, '')**
+  - Formula: **IMAGE(Picture&#95;Path__c, '')**
 
   Click **Next**, **Next**, **Save**
 

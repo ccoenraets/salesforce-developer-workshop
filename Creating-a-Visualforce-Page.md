@@ -2,7 +2,7 @@
 layout: module
 title: Module 7&#58; Creating a Visualforce Page
 ---
-In this module, you create a Visualforce page and you set it as the default page to edit and create speakers.
+In this module, you create a Visualforce page and you set it as the default page to create and edit speakers.
 
 ### Step 1: Create the SpeakerForm Visualforce page
 
@@ -34,7 +34,7 @@ In this module, you create a Visualforce page and you set it as the default page
 
 In this step, you set the SpeakerForm page as the default form for creating and editing speakers:
 
-1. In **Setup**, select **Build** > **Create** > **Objects** > **Speaker**
+1. In **Setup**, select **Build** > **Create** > **Objects** and click the **Speaker** link
 
 1. In the **Buttons, Links, and Actions** section, click **Edit** next to **New**
 

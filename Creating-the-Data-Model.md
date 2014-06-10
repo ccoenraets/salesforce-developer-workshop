@@ -2,11 +2,7 @@
 layout: module
 title: Module 2&#58; Creating the Data Model
 ---
-In this module, you create the custom objects that make up the data model for the MyConference application:
-
-- A conference **Session** object
-- A **Speaker** object
-- A **Session_Speaker** object used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions
+In this module, you create the custom objects that make up the data model for the MyConference application.
 
 ![](images/schema.jpg)
 
@@ -96,6 +92,8 @@ In this module, you create the custom objects that make up the data model for th
 
 ### Step 3: Create the Session_Speaker Junction Object
 
+The Session_Speaker object is used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions.
+
 1. In Setup, select **Build** > **Create** > **Objects**
 
 1. Click **New Custom Object**, and define the **Session_Speaker** object as follows:
@@ -133,4 +131,4 @@ In this module, you create the custom objects that make up the data model for th
 
 1. Check **Session**, **Speaker**, and **Session Speaker**
 
-1. Examine the MyConference data model. Rearrange the view as needed.
+1. Examine the MyConference data model. Rearrange the objects as needed.
