@@ -156,7 +156,6 @@ You need Node.js to perform the exercises this module. If you don't already have
   ```
 
 1. Test the application
-
   - Open a browser and access http://localhost:3000
   - Login with your Developer Edition credentials
   - You should now see the list of sessions
