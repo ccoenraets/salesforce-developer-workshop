@@ -124,6 +124,7 @@ You need Node.js to perform the exercises this module. If you don't already have
   - Login with your Developer Edition credentials
   - Open the browser console: you should see the **OAuth authentication succeeded** message
 
+  > It may take a few minutes for a Connected App to be available after you create it. If you get an this message: error=invalid_client_id&error_description=client%20identifier%20invalid, wait a few minutes and try again. 
 
 ### Step 5: Using the REST APIs
 
