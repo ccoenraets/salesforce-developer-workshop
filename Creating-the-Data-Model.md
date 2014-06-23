@@ -2,7 +2,7 @@
 layout: module
 title: Module 2&#58; Creating the Data Model
 ---
-In this module, you create the custom objects that make up the data model for the MyConference application.
+In this module, you create the custom objects that make up the data model for the conference application.
 
 ![](images/schema.jpg)
 
@@ -12,7 +12,11 @@ In this module, you create the custom objects that make up the data model for th
 
 1. Click the **Setup** link (upper right corner)
 
+  ![](images/setup.jpg)
+
 1. In the left navigation, select **Build** > **Create** > **Objects**
+
+  ![](images/custom-object.jpg)
 
 1. Click **New Custom Object**, and define the Session object as follows (accept the default values for the properties that are not mentioned below):
   - Label: **Session**
@@ -21,12 +25,20 @@ In this module, you create the custom objects that make up the data model for th
   - Record Name: **Session Name**
   - Data Type: **Text**
 
+  ![](images/session-object.jpg)
+
 1. Click **Save**
 
-1. In the **Custom Fields & Relationships** section, click **New**, and create a **Session Date** field defined as follows:
+1. In the **Custom Fields & Relationships** section, click **New**
+
+  ![](images/new-field.jpg)
+
+1. Create a **Session Date** field defined as follows:
   - Data Type: **Date/Time**
   - Field Label: **Session Date**
   - Field Name: **Session_Date**
+
+  ![](images/session-field.jpg)
 
   Click **Next**, **Next**, **Save & New**
 
@@ -126,6 +138,8 @@ The Session_Speaker object is used to model the many-to-many relationship betwee
 ### Step 4: Examine the Data Model in Schema Builder
 
 1. In Setup, search for "**schema**" in the left navigation, and click **Schema Builder**
+
+  ![](images/search-schema.jpg)
 
 1. Click **Clear All**
 

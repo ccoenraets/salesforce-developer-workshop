@@ -2,12 +2,16 @@
 layout: home
 title: Salesforce Developer Workshop
 ---
-In this workshop, you create a conference management application named MyConference. The application allows conference administrators to manage all the aspects of a conference: sessions, speakers, hotels, etc. You also create the starting point for the conference companion app using the Salesforce REST APIs.
+In this workshop, you use the Salesforce Platform to build a conference management application:
+
+- You create the **employee-facing** part of the application that allows conference administrators to manage all the
+aspects of a conference: sessions, speakers, hotels, etc.
+- You create the **consumer-facing** part of the application that allows conference attendees to view the conference schedule, and learn more about sessions and speakers.
 
 ### What You Will learn
 
 - Create Custom Objects
-- Use declarative features to create an Application, Tabs and optimize Page Layouts
+- Use declarative features of the platform to create an Application, create Tabs, and optimize Page Layouts
 - Create Apex Classes
 - Use SOQL and DML to query, create, update and delete data
 - Create Triggers
@@ -21,8 +25,10 @@ In this workshop, you create a conference management application named MyConfere
 
 ### Prerequisites
 
-- To complete this workshop, all you need is a modern browser and a connection to the Internet.
-- A working knowledge of Object Oriented Programming is assumed.
+To complete this workshop, all you need is a modern browser and a connection to the Internet.
+
+
+A working knowledge of Object Oriented Programming is assumed.
 
 ### Browser Requirements
 
@@ -30,3 +36,7 @@ In this workshop, you create a conference management application named MyConfere
 - Most recent version of Mozilla Firefox
 - Most recent version of Safari
 - Internet Explorer 9 or higher
+
+### Issues
+
+Please create a ticket [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run into a problem or if you have a recommendation to make this workshop better. 
