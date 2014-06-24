@@ -14,7 +14,7 @@ In this module, you create a Developer Edition Account that provides you with a 
 2. Fill in the signup form:
   - Enter your First Name and Last Name
   - For **Email**, enter an email address you have access to at this time (you will need to open an activation email)
-  - For **Username**, specify a unique user name in the form of an email address. for example: **firsname.lastname@s1workshop.com** (It doesn't have to be an existing email address: the Username is not used to send you emails)
+  - For **Username**, specify a unique user name in the form of an email address. For example: **firsname.lastname@workshop.com** (It doesn't have to be an existing email address: the Username is not used to send you emails)
   - Check the Master Subscription Agreement checkbox and click the **Sign Me Up** button
 
 3. Check your email. You will receive an activation email for your Developer Edition Account.

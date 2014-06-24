@@ -2,7 +2,7 @@
 layout: module
 title: Module 3&#58; Creating the Application
 ---
-In this module, you create Tabs to provide access to the Session and Speaker objects. You group these tabs together in an Application to make them easier to access, and you optimize Page Layouts to show relevant information in the Speaker and Session lists.
+In this module, you create Tabs to provide access to the Session and Speaker objects. You group these tabs together in an Application to make them easier to access. Finally, you optimize Page Layouts to show relevant information in the Speaker and Session lists.
 
 ![](images/app.jpg)
 
@@ -70,7 +70,7 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
 
   ![](images/session-detail.jpg)
 
-  > Notice that the list of speakers in both the speaker lookup dialog and the session details page doesn't currently provide very informative data. We will fix this in the next steps.
+  > Notice that the speaker lists in both the speaker lookup dialog and the session details page don't provide very informative data at this time. We will fix this in the next steps.
 
 
 
@@ -88,12 +88,12 @@ In this step, you optimize the Session details screen: to allow the user to easi
 
 1. In the **Related Lists** section, click the wrench icon (Related list properties)
 
-1. Add the following fields to the list of **Selected Fields**:
+1. Add the following fields to the **Selected Fields**:
    - Speaker: Speaker Number
    - Speaker: First Name
    - Speaker: Last Name
 
-1. Remove the following field from the list of **Selected Fields**:
+1. Remove the following field from the **Selected Fields**:
   - Session Speaker: Session Speaker Name
 
 1. Click **OK**
@@ -114,11 +114,11 @@ In this step, you optimize the Speaker details screen: to allow the user to easi
 
 1. In the **Related Lists** section, click the wrench icon (Related list properties)
 
-1. Add the following fields to the list of **Selected Fields**:
+1. Add the following fields to the **Selected Fields**:
   - Session: Session Name
   - Session: Session Date
 
-1. Remove the following field from the list of **Selected Fields**:
+1. Remove the following field from the **Selected Fields**:
   - Session Speaker: Session Speaker Name
 
 1. Click **OK**

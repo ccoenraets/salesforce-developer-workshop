@@ -104,7 +104,7 @@ In this module, you create the custom objects that make up the data model for th
 
 ### Step 3: Create the Session_Speaker Junction Object
 
-The Session_Speaker object is used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions.
+The Session_Speaker object is used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions. This is similar to an associative table in a traditional relational database.
 
 1. In Setup mode, select **Build** > **Create** > **Objects**
 
@@ -145,7 +145,7 @@ The Session_Speaker object is used to model the many-to-many relationship betwee
 
 1. Check **Session**, **Speaker**, and **Session Speaker**
 
-1. Examine the MyConference data model. Rearrange the objects as needed.
+1. Examine the Conference application data model. Rearrange the objects as needed.
 
 
 <div class="row" style="margin-top:40px;">

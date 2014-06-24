@@ -16,6 +16,7 @@ aspects of a conference: sessions, speakers, hotels, etc. You also create a simp
 - Create Controller Extensions and Custom Controllers
 - Use JavaScript in Visualforce Pages
 - Authenticate using OAuth
+- Access Salesforce data from JavaScript using JavaScript Remoting
 - Create a Custom Application using the REST APIs
 - Create Unit Tests
 - Create Batch Processes
@@ -29,14 +30,22 @@ aspects of a conference: sessions, speakers, hotels, etc. You also create a simp
 
 ### Browser Requirements
 
-- Most recent version of Google Chrome
-- Most recent version of Mozilla Firefox
-- Most recent version of Safari
-- Internet Explorer 9 or higher
+The following browsers are supported to work with the Developer Console:
+
+  - Most recent version of Google Chrome
+  - Most recent version of Mozilla Firefox
+  - Most recent version of Safari
+  - Internet Explorer 9 or higher
 
 ### Issues
 
-Please create an issue [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run into any problem or if you have a suggestion to make this workshop better.
+Please create an issue [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run into any problem or if you have a suggestion to improve this workshop.
+
+
+You can also send me a message on Twitter:
+
+<a href="https://twitter.com/ccoenraets" class="twitter-follow-button" data-show-count="true" data-lang="en" data-size="large">Follow @ccoenraets</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 
 <div class="row" style="margin-top:40px;">

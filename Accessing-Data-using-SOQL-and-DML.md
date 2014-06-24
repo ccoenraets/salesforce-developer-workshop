@@ -2,7 +2,7 @@
 layout: module
 title: Module 5&#58; Accessing Data using SOQL and DML
 ---
-SOQL is the Salesforce Object Query Language. It is the language you use to retrieve data in Salesforce, and it's similar to SQL.
+SOQL is the Salesforce Object Query Language. It is similar to SQL. You use SOQL to retrieve data in Salesforce.
 You use the Salesforce Data Manipulation Language (DML) to insert, update and delete data. In this module, you use the Developer Console to familiarize yourself with SOQL
 and DML. In the next modules, you'll use SOQL and DML statements in Apex classes and triggers.
 
@@ -32,7 +32,7 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
         ORDER BY First_Name__c, Last_Name__c
     ```
 
-1. Execute the following statement to to retrieve the conference schedule with session and speaker information:
+1. Execute the following statement to retrieve a list of sessions assigned to speakers with related session and speaker information:
 
     ```
     SELECT Session__r.Name,
@@ -42,8 +42,6 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
         FROM Session_Speaker__c
         ORDER BY Session__r.Session_Date__c, Session__r.Name
     ```
-
-    Because this is equivalent to a right join, this query will only return sessions with a speaker assignment.
 
 
 ### Step 2: Execute DML Statements
@@ -56,7 +54,7 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
   insert session;
   ```
 
-  You can execute a SOQL statement in the Query Editor as described above to make sure the session was created.
+  You can execute a SOQL statement in the Query Editor as described in step 1 to make sure the session was created.
 
 
 1. Execute the following statements to update a session:
@@ -66,6 +64,9 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
   session.Level__c = 'Intermediate';
   update session;
   ```
+
+  Again, you can execute a SOQL statement in the Query Editor to make sure the session was updated as expected.
+
 
 ### Additional Resources
 

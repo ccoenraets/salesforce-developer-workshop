@@ -2,7 +2,7 @@
 layout: module
 title: Module 4&#58; Creating an Apex Class
 ---
-In this module, you create an EmailManager class that encapsulates the logic to send confirmation emails to the conference speakers.
+Apex is a strongly typed, object-oriented programming language that you use to execute code in your Saleforce instance. The Apex syntax is similar to Java and also includes built-in support for database operations. In this module, you create an EmailManager class that encapsulates the logic to send confirmation emails to the conference speakers.
 
 ### Step 1: Create the EmailManager class
 
@@ -68,7 +68,7 @@ Since EmailManager is a utility class that doesn't work with instance-specific v
 
 3. Go back to the **Execute Anonymous Window** (**Debug** > **Open Execute Anonymous Window**)
 
-4. Modify the Apex code to invoke sendMail() statically:
+4. Modify the Apex code to invoke sendMail() using a static method call:
 
   ```
   String address = 'YOUR_EMAIL_ADDRESS';
