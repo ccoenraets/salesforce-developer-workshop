@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 3&#58; Creating the Application</h1>
+        <hr/>
+        <p>In this module, you create Tabs to provide access to the Session and Speaker objects. You group these tabs together in an Application to make them easier to access, and you optimize Page Layouts to show relevant information in the Speaker and Session lists.</p>
+
+<p><img src="images/app.jpg" alt=""></p>
+
+<h3>Step 1: Creating Tabs</h3>
+
+<p>To create the Sessions tab:</p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Tabs</strong></p></li>
+<li><p>In the <strong>Custom Object Tabs</strong> section, click <strong>New</strong></p></li>
+<li><p>Select <strong>Session</strong> as the Object, click the magnifier icon next to Tab Style and select the <strong>Books</strong> icon</p></li>
+<li><p>Click <strong>Next</strong>, <strong>Next</strong></p></li>
+<li><p>Uncheck the <strong>Include Tab</strong> checkbox to ensure the Sessions tab doesn&#39;t appear in any of the existing applications, and click <strong>Save</strong> (In step 2, we will add the Sessions tab to a new application).</p></li>
+</ol>
+
+<p>To create the Speakers tab:</p>
+
+<ol>
+<li><p>In the <strong>Custom Object Tabs</strong> section, click <strong>New</strong></p></li>
+<li><p>Select <strong>Speaker</strong> as the Object, click the magnifier icon next to Tab Style and select the <strong>Presenter</strong> icon</p></li>
+<li><p>Click <strong>Next</strong>, <strong>Next</strong></p></li>
+<li><p>Uncheck the <strong>Include Tab</strong> checkbox to ensure the Speakers tab doesn&#39;t appear in any of the existing applications, and click <strong>Save</strong></p></li>
+</ol>
+
+<h3>Step 2: Creating the App</h3>
+
+<p>A Salesforce App is a group of Tabs that makes it easy for users to access a set of related features.</p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Apps</strong></p></li>
+<li><p>In the <strong>Apps</strong> section, click <strong>New</strong></p></li>
+<li><p>Check <strong>Custom app</strong> and click <strong>Next</strong></p></li>
+<li><p>Enter <strong>Conference</strong> for both the App Label and App Name, and click <strong>Next</strong></p></li>
+<li><p>Accept the default App Logo and click <strong>Next</strong></p></li>
+<li><p>Add the <strong>Sessions</strong> and <strong>Speakers</strong> tabs to the <strong>Selected Tabs</strong> and click <strong>Next</strong></p></li>
+<li><p>Check the <strong>System Administrator</strong> profile and click <strong>Save</strong></p>
+
+<p><img src="images/sysadmin.jpg" alt=""></p></li>
+<li><p>Select <strong>Conference</strong> in the App selector (upper right corner of the screen)</p>
+
+<p><img src="images/conference-app.jpg" alt=""></p>
+
+<blockquote>
+<p>If the Conference App doesn&#39;t appear in the App Selector, you probably forgot to assign it to the System Administrator profile. In Setup, select Build &gt; Create &gt; App, click Edit next to Conference, check the System Administrator profile, and click Save.</p>
+</blockquote></li>
+</ol>
+
+<h3>Step 3: Enter Sample Data</h3>
+
+<ol>
+<li><p>Click the <strong>Speakers Tab</strong>, click <strong>New</strong>, and add a few sample speakers</p></li>
+<li><p>Click the <strong>Sessions Tab</strong>, click <strong>New</strong>, and  add a few sample sessions</p></li>
+<li><p>To assign speakers to a session:</p>
+
+<ul>
+<li>In the details view for a session, click <strong>New Session Speaker</strong></li>
+<li>Click the magnifier icon next to the Speaker field, select a speaker in the Speaker lookup dialog and click <strong>Save</strong></li>
+</ul>
+
+<p><img src="images/speaker-lookup.jpg" alt=""></p>
+
+<p><img src="images/session-detail.jpg" alt=""></p>
+
+<blockquote>
+<p>Notice that the list of speakers in both the speaker lookup dialog and the session details page doesn&#39;t currently provide very informative data. We will fix this in the next steps.</p>
+</blockquote></li>
+</ol>
+
+<h3>Step 4: Optimize the Session Page Layout</h3>
+
+<p>In this step, you optimize the Session details screen: to allow the user to easily identify the speakers for a session, you add the appropriate fields to the Speaker list.  </p>
+
+<p><img src="images/session-layout.jpg" alt=""></p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click the <strong>Session</strong> link</p></li>
+<li><p>In the <strong>Page Layouts</strong> section, click <strong>Edit</strong> next to Session Layout</p></li>
+<li><p>In the <strong>Related Lists</strong> section, click the wrench icon (Related list properties)</p></li>
+<li><p>Add the following fields to the list of <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Speaker: Speaker Number</li>
+<li>Speaker: First Name</li>
+<li>Speaker: Last Name</li>
+</ul></li>
+<li><p>Remove the following field from the list of <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Session Speaker: Session Speaker Name</li>
+</ul></li>
+<li><p>Click <strong>OK</strong></p></li>
+<li><p>Click <strong>Save</strong> (upper left corner)</p></li>
+</ol>
+
+<h3>Step 5: Optimize the Speaker Page Layout</h3>
+
+<p>In this step, you optimize the Speaker details screen: to allow the user to easily identify the sessions for a speaker, you add the appropriate fields to the Session list.  </p>
+
+<p><img src="images/speaker-layout.jpg" alt=""></p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click the <strong>Speaker</strong> link</p></li>
+<li><p>In the <strong>Page Layouts</strong> section, click <strong>Edit</strong> next to Speaker Layout</p></li>
+<li><p>In the <strong>Related Lists</strong> section, click the wrench icon (Related list properties)</p></li>
+<li><p>Add the following fields to the list of <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Session: Session Name</li>
+<li>Session: Session Date</li>
+</ul></li>
+<li><p>Remove the following field from the list of <strong>Selected Fields</strong>:</p>
+
+<ul>
+<li>Session Speaker: Session Speaker Name</li>
+</ul></li>
+<li><p>Click <strong>OK</strong></p></li>
+<li><p>Click <strong>Save</strong> (upper left corner)</p></li>
+</ol>
+
+<h3>Step 6: Optimize the Speaker Lookup</h3>
+
+<p>In this step, you optimize the Speaker lookup dialog to allow the user to easily identify speakers.  </p>
+
+<p><img src="images/lookup.jpg" alt=""></p>
+
+<ol>
+<li><p>In <strong>Setup</strong> mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click the <strong>Speaker</strong> link</p></li>
+<li><p>Scroll down to the <strong>Search Layouts</strong> section, and click <strong>Edit</strong> next to <strong>Lookup Dialogs</strong></p></li>
+<li><p>Add <strong>First Name</strong> and <strong>Last Name</strong> to the <strong>Selected Fields</strong></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+</ol>
+
+<h3>Step 7: Test the Application</h3>
+
+<ol>
+<li><p>Click the Sessions tab, select a session and make sure the speaker list shows the speaker number, first name, and last name</p></li>
+<li><p>Assign a new speaker to a session and make sure the speaker lookup dialog shows the speaker first name and last name</p></li>
+<li><p>Click the Speakers tab, select a speaker and make sure the session list shows the session name and date</p></li>
+</ol>
+
+<blockquote>
+<p>If the lists don&#39;t show the expected fields, you probably forgot to click the Save button in the Page Layout screen. Go back to steps 4 and 5, and make sure you click Save at the end.</p>
+</blockquote>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-the-Data-Model.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Creating-an-Apex-Class.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

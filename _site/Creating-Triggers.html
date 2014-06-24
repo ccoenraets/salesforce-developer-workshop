@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 6&#58; Creating Triggers</h1>
+        <hr/>
+        <p>In this module, you create a trigger that sends confirmation emails to speakers when they are assigned to a session.
+You create another trigger that rejects double bookings of speakers.</p>
+
+<h3>Step 1: Create a Trigger that Sends Confirmation Emails</h3>
+
+<p>In this step, you create a trigger that sends confirmation emails to speakers when they are assigned to a session.</p>
+
+<ol>
+<li><p>In the Developer Console, click <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Trigger</strong></p></li>
+<li><p>Specify <strong>SendConfirmationEmail</strong> as the trigger name, <strong>Session&#95;Speaker__c</strong> as the sObject, and click <strong>Submit</strong></p></li>
+<li><p>Implement the trigger as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">trigger SendConfirmationEmail on Session_Speaker__c (after insert) {
+
+    for(Session_Speaker__c newItem : trigger.new) {
+
+        // Retrieve session name and time + speaker name and email address
+        Session_Speaker__c sessionSpeaker =
+            [SELECT Session__r.Name,
+                    Session__r.Session_Date__c,
+                    Speaker__r.First_Name__c,
+                    Speaker__r.Last_Name__c,
+                 Speaker__r.Email__c
+             FROM Session_Speaker__c WHERE Id=:newItem.Id];
+
+        // Send confirmation email if we know the speaker&#39;s email address
+        if (sessionSpeaker.Speaker__r.Email__c != null) {
+            String address = sessionSpeaker.Speaker__r.Email__c;
+            String subject = &#39;Speaker Confirmation&#39;;
+            String message = &#39;Dear &#39; + sessionSpeaker.Speaker__r.First_Name__c +
+                &#39;,\nYour session &quot;&#39; + sessionSpeaker.Session__r.Name + &#39;&quot; on &#39; +
+                sessionSpeaker.Session__r.Session_Date__c + &#39; is confirmed.\n\n&#39; +
+                &#39;Thanks for speaking at the conference!&#39;;
+            EmailManager.sendMail(address, subject, message);
+        }
+    }
+
+}
+</code></pre></div>
+<blockquote>
+<p>In a real-life application, hardcoding the email message is not a recommended approach. Consider using <a href="https://help.salesforce.com/HTViewHelpDoc?id=admin_emailtemplates.htm&amp;language=en_US">email templates</a> instead.</p>
+</blockquote></li>
+<li><p>Save the file. The trigger takes effect as soon as you save it.</p></li>
+<li><p>Test the trigger</p>
+
+<ul>
+<li>Create a speaker that has your own email address</li>
+<li>Assign that speaker to a session, and check your email: you should receive a speaker confirmation email</li>
+</ul>
+
+<blockquote>
+<p>Sending a confirmation email when a speaker is assigned to a session (in other words, when a Session&#95;Speaker__c record is created) can be accomplished without writing code by defining a <a href="https://developer.salesforce.com/page/Workflow_Rules">workflow rule</a>. The programmatic approach used in this workshop allows you to satisfy additional requirements. For example, sending a confirmation email &quot;on demand&quot;, independently of a record being created or updated.</p>
+</blockquote></li>
+</ol>
+
+<h3>Step 2: Create a Trigger that Rejects Double Bookings</h3>
+
+<ol>
+<li><p>In the Developer Console, click <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Trigger</strong></p></li>
+<li><p>Specify <strong>RejectDoubleBooking</strong> as the trigger name, <strong>Session&#95;Speaker__c</strong> as the sObject, and click <strong>Submit</strong></p></li>
+<li><p>Implement the trigger as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">trigger RejectDoubleBooking on Session_Speaker__c (before insert, before update) {
+
+    for(Session_Speaker__c sessionSpeaker : trigger.new) {
+
+        Session__c session = [SELECT Id, Session_Date__c FROM Session__c
+                                WHERE Id=:sessionSpeaker.Session__c];
+
+        List&lt;Session_Speaker__c&gt; conflicts =
+            [SELECT Id FROM Session_Speaker__c
+                WHERE Speaker__c = :sessionSpeaker.Speaker__c
+                AND Session__r.Session_Date__c = :session.Session_Date__c];
+
+        if(!conflicts.isEmpty()){
+            sessionSpeaker.addError(&#39;The speaker is already booked at that time&#39;);
+        }
+
+    }
+
+}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Test the trigger:</p>
+
+<ul>
+<li>Assign a speaker to a session scheduled at a time the speaker is available and make sure it still works</li>
+<li>Assign a speaker to a session scheduled at the same time as another session the speaker is already assigned to: you should see the error message</li>
+</ul>
+
+<p><img src="images/doublebooking.jpg" alt=""></p>
+
+<blockquote>
+<p>RejectDoubleBooking is not sufficient to entirely prevent the double booking of speakers. For example, the user could change the date and time of a session in a way that creates a double booking for a speaker assigned to that session. You could create an additional trigger to take care of that situation.</p>
+</blockquote></li>
+</ol>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Accessing-Data-using-SOQL-and-DML.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Creating-a-Visualforce-Page.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 1&#58; Creating a Developer Edition Account</h1>
+        <hr/>
+        <p>In this module, you create a Developer Edition Account that provides you with a full-featured but isolated Salesforce environment to perform the exercises in this workshop.</p>
+
+<blockquote>
+<p>If you already signed up for a Developer Edition account, you can skip the instructions below and go directly to <a href="/Creating-the-Data-Model.html">Module 2</a>.</p>
+</blockquote>
+
+<h3>Steps</h3>
+
+<ol>
+<li><p>Open a browser and access the following URL: <a href="http://developer.salesforce.com/join">http://developer.salesforce.com/join</a></p></li>
+<li><p>Fill in the signup form:</p>
+
+<ul>
+<li>Enter your First Name and Last Name</li>
+<li>For <strong>Email</strong>, enter an email address you have access to at this time (you will need to open an activation email)</li>
+<li>For <strong>Username</strong>, specify a unique user name in the form of an email address. for example: <strong>firsname.lastname@s1workshop.com</strong> (It doesn&#39;t have to be an existing email address: the Username is not used to send you emails)</li>
+<li>Check the Master Subscription Agreement checkbox and click the <strong>Sign Me Up</strong> button</li>
+</ul></li>
+<li><p>Check your email. You will receive an activation email for your Developer Edition Account.</p></li>
+<li><p>Click the link in the activation email. Enter your new password information, and click <strong>Save</strong>.</p></li>
+</ol>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="index.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Creating-the-Data-Model.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 7&#58; Creating a Visualforce Page</h1>
+        <hr/>
+        <p>In this module, you create a Visualforce page to provide a custom user interface for creating and editing speakers.</p>
+
+<h3>Step 1: Create the SpeakerForm Visualforce Page</h3>
+
+<ol>
+<li><p>In the <strong>Developer Console</strong>, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Visualforce Page</strong>, specify <strong>SpeakerForm</strong> as the page name and click <strong>OK</strong></p></li>
+<li><p>Implement SpeakerForm as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page standardController=&quot;Speaker__c&quot;&gt;
+&lt;apex:form &gt;
+    &lt;apex:pageBlock title=&quot;Edit Speaker&quot;&gt;
+        &lt;apex:pageBlockSection columns=&quot;1&quot;&gt;
+            &lt;apex:inputField value=&quot;{!Speaker__c.First_Name__c}&quot;/&gt;
+            &lt;apex:inputField value=&quot;{!Speaker__c.Last_Name__c}&quot;/&gt;
+            &lt;apex:inputField value=&quot;{!Speaker__c.Email__c}&quot;/&gt;
+        &lt;/apex:pageBlockSection&gt;
+        &lt;apex:pageBlockButtons &gt;
+            &lt;apex:commandButton action=&quot;{!save}&quot; value=&quot;Save&quot;/&gt;
+        &lt;/apex:pageBlockButtons&gt;
+    &lt;/apex:pageBlock&gt;
+&lt;/apex:form&gt;
+&lt;/apex:page&gt;
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Test the Visualforce page. There are several ways you can test your Visualforce page. For example, you can:</p>
+
+<ul>
+<li>Click the <strong>Preview</strong> button in the file editor for SpeakerForm in the developer console</li>
+<li>Directly access the Visualforce page by appending <strong>/apex/SpeakerForm</strong> to your instance&#39;s domain name in the browser. For example, access: <a href="https://na17.salesforce.com/apex/SpeakerForm">https://na17.salesforce.com/apex/SpeakerForm</a> (make sure you use your own Salesforce domain name)</li>
+</ul></li>
+</ol>
+
+<h3>Step 2: Set SpeakerForm as the Default Form</h3>
+
+<p>In this step, you set the SpeakerForm page as the default form for creating and editing speakers:</p>
+
+<ol>
+<li><p>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong> and click the <strong>Speaker</strong> link</p></li>
+<li><p>Scroll down to the <strong>Buttons, Links, and Actions</strong> section, and click <strong>Edit</strong> next to <strong>New</strong></p></li>
+<li><p>Check Override With Visualforce Page, and select <strong>SpeakerForm</strong></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Buttons, Links, and Actions</strong> section, click <strong>Edit</strong> next to <strong>Edit</strong></p></li>
+<li><p>Check Override With Visualforce Page, and select <strong>SpeakerForm</strong></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+</ol>
+
+<h3>Step 3: Test the Application</h3>
+
+<ol>
+<li><p>Click the Speakers Tab</p></li>
+<li><p>Select a speaker and click Edit: you are now editing the speaker information using your Visualforce page</p></li>
+<li><p>Modify some data, and click Save</p></li>
+</ol>
+
+<blockquote>
+<p>At this stage, the Visualforce page doesn&#39;t provide any additional capability compared to the default speaker form. In
+the next module, you will enhance SpeakerForm to support the upload of the speaker picture.</p>
+</blockquote>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-Triggers.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Creating-a-Controller-Extension.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

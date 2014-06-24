@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 9&#58; Using JavaScript in Visualforce Pages</h1>
+        <hr/>
+        <p>In this module, you create a custom controller with a method that returns a list of conference hotels. You create a Visualforce page that invokes that method using JavaScript Remoting, and uses the Google Maps SDK to display the hotels on a map.</p>
+
+<p><img src="images/hotelmap.jpg" alt=""></p>
+
+<h3>Step 1: Create the Hotel Object</h3>
+
+<ol>
+<li><p>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the Hotel Object as follows:</p>
+
+<ul>
+<li>Label: <strong>Hotel</strong></li>
+<li>Plural Label: <strong>Hotels</strong></li>
+<li>Object Name: <strong>Hotel</strong></li>
+<li>Record Name: <strong>Hotel Name</strong></li>
+<li>Data Type: <strong>Text</strong></li>
+</ul></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>Location</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Geolocation</strong></li>
+<li>Field Label: <strong>Location</strong></li>
+<li>Latitude and Longitude Display Notation: <strong>Decimal</strong></li>
+<li>Decimal Places: <strong>7</strong></li>
+<li>Field Name: <strong>Location</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+<li><p>Create a Tab for the Hotel object</p>
+
+<ul>
+<li>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Tabs</strong></li>
+<li>In the <strong>Custom Object Tabs</strong> section, click <strong>New</strong></li>
+<li>Select the <strong>Hotel</strong> object and <strong>Building</strong> as the Tab Style Icon</li>
+<li>Click <strong>Next</strong>, <strong>Next</strong></li>
+<li>Uncheck the <strong>Include Tab</strong> checkbox, check the <strong>Conference</strong> checkbox, and click <strong>Save</strong></li>
+</ul>
+
+<p><img src="images/hotel-tab.jpg" alt=""></p></li>
+<li><p>Enter a couple of hotels with location information. For example:</p>
+
+<ul>
+<li>Marriott Marquis (37.785143 -122.403405)</li>
+<li>Hilton Union Square (37.786164 -122.410137)</li>
+<li>Hyatt (37.794157 -122.396311)</li>
+</ul>
+
+<p><img src="images/marriott.jpg" alt=""></p></li>
+</ol>
+
+<h3>Step 2: Create the HotelRemoter Controller</h3>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>, specify <strong>HotelRemoter</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Implement the class as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global with sharing class HotelRemoter {
+
+    @RemoteAction
+    global static List&lt;Hotel__c&gt; findAll() {
+        return [SELECT Id, Name, Location__Latitude__s, Location__Longitude__s
+                    FROM Hotel__c];
+    }
+
+}
+</code></pre></div></li>
+<li><p>Save the file  </p></li>
+</ol>
+
+<h3>Step 3: Create a Visualforce Page with Google Maps</h3>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Visualforce Page</strong>, specify <strong>HotelMap</strong> as the page name and click <strong>OK</strong></p></li>
+<li><p>Implement HotelMap as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page sidebar=&quot;false&quot; showheader=&quot;false&quot;&gt;
+
+&lt;head&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+  html { height: 100% }
+  body { height: 100%; margin: 0; padding: 0 }
+  #map-canvas { height: 100% }
+&lt;/style&gt;
+&lt;script src=&quot;https://maps.googleapis.com/maps/api/js?sensor=false&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+var map;
+
+function initialize() {
+    var mapOptions = {
+        center: new google.maps.LatLng(37.784173, -122.401557),
+        zoom: 15
+    };
+    map = new google.maps.Map(document.getElementById(&quot;map-canvas&quot;), mapOptions);
+}
+
+google.maps.event.addDomListener(window, &#39;load&#39;, initialize);
+
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id=&quot;map-canvas&quot;/&gt;
+&lt;/body&gt;
+
+&lt;/apex:page&gt;
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Click the <strong>Preview</strong> button (upper left corner) to test the HotelMap page in the browser</p></li>
+</ol>
+
+<h3>Step 4: Display the Hotels on the Map</h3>
+
+<ol>
+<li><p>Assign <strong>HotelRemoter</strong> as the controller for the <strong>HotelMap</strong> Visualforce page:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page sidebar=&quot;false&quot; showheader=&quot;false&quot; controller=&quot;HotelRemoter&quot;&gt;
+</code></pre></div></li>
+<li><p>Define a function named loadHotels() implemented as follows (right after the initilize() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function loadHotels() {
+    Visualforce.remoting.Manager.invokeAction(&#39;{!$RemoteAction.HotelRemoter.findAll}&#39;,
+        function(result, event){
+            if (event.status) {
+                for (var i=0; i&lt;result.length; i++) {
+                    var id = result[i].Id;
+                    var name = result[i].Name;
+                    var lat = result[i].Location__Latitude__s;
+                    var lng = result[i].Location__Longitude__s;
+                    addMarker(id, name, lat, lng);
+                }
+            } else {
+                alert(event.message);
+            }
+        },
+        {escape: true}
+    );
+}
+</code></pre></div></li>
+<li><p>Define the addMarker() function implemented as follows (right after the loadHotels() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function addMarker(id, name, lat, lng) {
+    var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, lng),
+            map: map,
+            title: name
+    });
+    google.maps.event.addListener(marker, &#39;click&#39;, function(event) {
+        window.top.location = &#39;/&#39; + id;
+    });
+}
+</code></pre></div></li>
+<li><p>Invoke loadHotels() as the last line of the <strong>initialize()</strong> function:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">loadHotels();
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Click the <strong>Preview</strong> button (upper left corner) to test the HotelMap page in the browser. You should now see markers on the map representing the hotels you entered in Step 1.</p></li>
+</ol>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-a-Controller-Extension.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Using-the-Salesforce1-Platform-APIs.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

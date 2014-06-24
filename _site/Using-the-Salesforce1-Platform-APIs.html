@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 10&#58; Using the Salesforce1 Platform APIs</h1>
+        <hr/>
+        <p>In this module, you create an application that runs outside your Salesforce instance: it uses OAuth to authenticate with Salesforce, and the REST APIs to access Salesforce data.</p>
+
+<p><img src="images/api.jpg" alt=""></p>
+
+<h3>Requirement</h3>
+
+<p>You need Node.js to perform the exercises in this module. If you don&#39;t already have Node.js installed on your system, you can install it <a href="http://nodejs.org/">here</a>.</p>
+
+<blockquote>
+<p>This module is recommended but optional. If you are not interested in building custom applications (applications hosted outside your Salesforce instance), you can move to Module 11.</p>
+</blockquote>
+
+<h3>Step 1: Create a Connected App</h3>
+
+<ol>
+<li><p>In Setup, click <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Apps</strong></p></li>
+<li><p>In the <strong>Connected Apps</strong> section, click <strong>New</strong>, and define the Connected App as follows:</p>
+
+<ul>
+<li>Connected App Name: MyConference</li>
+<li>API Name: MyConference</li>
+<li>Contact Email: enter your email address</li>
+<li>Enabled OAuth Settings: Checked</li>
+<li>Callback URL: http://localhost:3000/oauthcallback.html</li>
+<li>Selected OAuth Scopes: Full Access (full)</li>
+</ul>
+
+<p><img src="images/connected-app.jpg" alt=""></p></li>
+<li><p>Click <strong>Save</strong>.</p></li>
+</ol>
+
+<h3>Step 2: Install the Supporting Files</h3>
+
+<ol>
+<li><p>Download and unzip <a href="https://github.com/ccoenraets/salesforce-developer-workshop/archive/master.zip">this file</a>, or clone <a href="https://github.com/ccoenraets/salesforce-developer-workshop">this repository</a></p></li>
+<li><p>Using your favorite code editor, examine the code in <strong>client/index.html</strong>:</p>
+
+<ul>
+<li>It provides the basic markup to render a list of sessions as shown in the screenshot above.</li>
+<li>It uses ratchet.css. <a href="http://goratchet.com/">Ratchet</a> is a simple CSS toolkit that provides styles for mobile applications.</li>
+<li>It uses <a href="https://github.com/developerforce/Force.com-JavaScript-REST-Toolkit">ForceTK</a>, the Force.com JavaScript REST Toolkit, to integrate with Salesforce.</li>
+<li>You will code the logic of the application (OAuth login) and data access logic in js/app.js which is empty at this time.<br></li>
+</ul></li>
+<li><p>Using your favorite code editor, examine the code in <strong>client/oauthcallback.html</strong>:</p>
+
+<p>At the end of the OAuth workflow, the Salesforce authentication process loads the redirect URI you specified in your Connected App and passes the access token and other OAuth values (server instance, refresh token, etc.) in the query string. Your redirect URI page simply needs to parse the query string, extract the access token and the other OAuth values, and pass that information back to your application by invoking the oauthCallback() function you will code in Step 4.</p></li>
+<li><p>Using your favorite code editor, examine the code in <strong>server.js</strong>. server.js implements a small HTTP server that provides two features:</p>
+
+<ul>
+<li>Web server for static content. The document root for the web server is the client directory.</li>
+<li>Proxy for Salesforce REST requests. Because of the browser’s cross-origin restrictions, your JavaScript application hosted on your own server (or localhost) will not be able to make API calls directly to the *.salesforce.com domain. The solution is to proxy your API calls through your own server.</li>
+</ul></li>
+</ol>
+
+<h3>Step 3: Start the Node.js server</h3>
+
+<ol>
+<li><p>Open Terminal (Mac) or a Command prompt (Windows)</p></li>
+<li><p>Navigate (cd) to the <strong>salesforce-developer-workshop</strong> (or salesforce-developer-workshop-master) directory</p></li>
+<li><p>Install the Node.js server dependencies:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">npm install
+</code></pre></div></li>
+<li><p>Start the server:  </p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">node server
+</code></pre></div></li>
+<li><p>Test the application. Open a browser and access the following URL:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">http://localhost:3000
+</code></pre></div>
+<p>Since we didn&#39;t authenticate with Salesforce yet, all you should see at this point is an empty list of sessions.</p></li>
+</ol>
+
+<h3>Step 4: Authenticate with Salesforce using OAuth</h3>
+
+<ol>
+<li><p>Using your favorite code editor, open <strong>app.js</strong> in <strong>salesforce-developer-workshop/client/js</strong></p></li>
+<li><p>Declare the following variables:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">var apiVersion = &#39;v30.0&#39;,
+clientId = &#39;YOUR_CONSUMER_KEY&#39;,
+loginUrl = &#39;https://login.salesforce.com/&#39;,
+redirectURI = &#39;http://localhost:3000/oauthcallback.html&#39;,
+proxyURL = &#39;http://localhost:3000/proxy/&#39;,
+client = new forcetk.Client(clientId, loginUrl, proxyURL);
+</code></pre></div></li>
+<li><p>In <strong>Setup</strong> (back in Salesforce), click <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Apps</strong>. In the <strong>Connected Apps</strong> section, click <strong>MyConference</strong>, and copy the <strong>Consumer Key</strong> to your clipboard.</p>
+
+<p><img src="images/consumer-key.jpg" alt=""></p></li>
+<li><p>In app.js, replace YOUR&#95;CONSUMER_KEY with the consumer key you copied to your clipboard</p></li>
+<li><p>In app.js, declare a function named <strong>login()</strong> implemented as follows (right after the variable declarations):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function login() {
+    var url = loginUrl + &#39;services/oauth2/authorize?display=popup&amp;response_type=token&#39;
+                + &#39;&amp;client_id=&#39; + encodeURIComponent(clientId)
+                + &#39;&amp;redirect_uri=&#39; + encodeURIComponent(redirectURI);
+    window.open(url);
+}
+</code></pre></div></li>
+<li><p>Declare a function named <strong>oauthCallback()</strong> implemented as follows (right after the login() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function oauthCallback(response) {
+    if (response &amp;&amp; response.access_token) {
+        client.setSessionToken(response.access_token,
+                               apiVersion,
+                               response.instance_url);
+        console.log(&#39;OAuth authentication succeeded&#39;);
+    } else {
+        alert(&quot;AuthenticationError: No Token&quot;);
+    }
+}
+</code></pre></div>
+<blockquote>
+<p>oauthCallback() is called by the oauthcallback.html page at the end of the OAuth workflow (see oauthcallback.html in step 2 for details).</p>
+</blockquote></li>
+<li><p>Invoke the login() function as the last line of the app.js file:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">login();
+</code></pre></div></li>
+<li><p>Test the application</p>
+
+<ul>
+<li>Open a browser and access <a href="http://localhost:3000">http://localhost:3000</a></li>
+<li>Login with your Developer Edition credentials</li>
+<li>Open the browser console: you should see the <strong>OAuth authentication succeeded</strong> message</li>
+</ul>
+
+<blockquote>
+<p>It may take a few minutes for a Connected App to be available after you create it. If you get this message: <strong>error=invalid<em>client</em>id&amp;error_description=client%20identifier%20invalid</strong>, wait a few minutes and try again.</p>
+</blockquote></li>
+</ol>
+
+<h3>Step 5: Using the REST APIs</h3>
+
+<ol>
+<li><p>In app.js, declare a function named <strong>getSessions()</strong> implemented as follows (right after the oauthCallback() function):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">function getSessions() {
+    var soql = &quot;SELECT Id, Name, Session_Date__c FROM Session__c&quot;,
+        html = &#39;&#39;;
+    client.query(soql,
+        function (data) {
+            var sessions = data.records;
+            for (var i=0; i&lt;sessions.length; i++) {
+                html += &#39;&lt;li class=&quot;table-view-cell&quot;&gt;&#39; + sessions[i].Name + &#39;&lt;/li&gt;&#39;;
+            }
+            $(&#39;.session-list&#39;).html(html);
+        },
+        function (error) {
+            alert(&quot;Error: &quot; + JSON.stringify(error));
+        });
+    return false;
+}
+</code></pre></div></li>
+<li><p>Modify the oauthCallback() function to invoke getSessions() when the user has been successfully authenticated.</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">console.log(&#39;OAuth authentication succeeded&#39;);
+getSessions();
+</code></pre></div></li>
+<li><p>Test the application</p>
+
+<ul>
+<li>Open a browser and access <a href="http://localhost:3000">http://localhost:3000</a></li>
+<li>Login with your Developer Edition credentials</li>
+<li>You should now see the list of sessions</li>
+</ul></li>
+</ol>
+
+<blockquote>
+<p>This is just the starting point for building a custom application written in JavaScript, authenticating with Salesforce using OAuth, and accessing Salesforce data using the REST APIs. If you are planning on building a real-life application based on this architecture, consider using a JavaScript framework such as <a href="http://backbonejs.org/">Backbone.js</a> or <a href="https://angularjs.org/">AngularJS</a> with <a href="http://ionicframework.com/">Ionic</a>.</p>
+</blockquote>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Using-JavaScript-in-Visualforce-Pages.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Testing.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

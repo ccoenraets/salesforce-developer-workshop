@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 2&#58; Creating the Data Model</h1>
+        <hr/>
+        <p>In this module, you create the custom objects that make up the data model for the conference application.</p>
+
+<p><img src="images/schema.jpg" alt=""></p>
+
+<h3>Step 1: Create the Conference Session Object</h3>
+
+<ol>
+<li><p>Login into your Developer Edition account</p></li>
+<li><p>Click the <strong>Setup</strong> link (upper right corner)</p>
+
+<p><img src="images/setup.jpg" alt=""></p></li>
+<li><p>In the left navigation, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p>
+
+<p><img src="images/custom-object.jpg" alt=""></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the Session object as follows (accept the default values for the properties that are not mentioned below):</p>
+
+<ul>
+<li>Label: <strong>Session</strong></li>
+<li>Plural Label: <strong>Sessions</strong></li>
+<li>Object Name: <strong>Session</strong></li>
+<li>Record Name: <strong>Session Name</strong></li>
+<li>Data Type: <strong>Text</strong></li>
+</ul>
+
+<p><img src="images/session-object.jpg" alt=""></p></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong></p>
+
+<p><img src="images/new-field.jpg" alt=""></p></li>
+<li><p>Create a <strong>Session Date</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Date/Time</strong></li>
+<li>Field Label: <strong>Session Date</strong></li>
+<li>Field Name: <strong>Session_Date</strong></li>
+</ul>
+
+<p><img src="images/session-field.jpg" alt=""></p>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Description</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text Area (Long)</strong></li>
+<li>Field Label: <strong>Description</strong></li>
+<li>Field Name: <strong>Description</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Level</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Picklist</strong></li>
+<li>Field Label: <strong>Level</strong></li>
+<li>Values: <strong>Beginner</strong>, <strong>Intermediate</strong>, <strong>Advanced</strong> (specify each value on its own row)</li>
+<li>Field Name: <strong>Level</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+</ol>
+
+<h3>Step 2: Create the Speaker Object</h3>
+
+<ol>
+<li><p>In Setup mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the Speaker object as follows (accept the default values for the properties that are not mentioned below):</p>
+
+<ul>
+<li>Label: <strong>Speaker</strong></li>
+<li>Plural Label: <strong>Speakers</strong></li>
+<li>Object Name: <strong>Speaker</strong></li>
+<li>Record Name: <strong>Speaker Number</strong></li>
+<li>Data Type: <strong>Auto Number</strong></li>
+<li>Display Format: <strong>SP-{00000}</strong></li>
+<li>Starting Number: <strong>1</strong></li>
+</ul></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>First Name</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text</strong></li>
+<li>Field Label: <strong>First Name</strong></li>
+<li>Length: <strong>30</strong></li>
+<li>Field Name: <strong>First_Name</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Last Name</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text</strong></li>
+<li>Field Label: <strong>Last Name</strong></li>
+<li>Length: <strong>30</strong></li>
+<li>Field Name: <strong>Last_Name</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create an <strong>Email</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Email</strong></li>
+<li>Field Label: <strong>Email</strong></li>
+<li>Field Name: <strong>Email</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Bio</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text Area (Long)</strong></li>
+<li>Field Label: <strong>Bio</strong></li>
+<li>Field Name: <strong>Bio</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+</ol>
+
+<h3>Step 3: Create the Session_Speaker Junction Object</h3>
+
+<p>The Session_Speaker object is used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions.</p>
+
+<ol>
+<li><p>In Setup mode, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong></p></li>
+<li><p>Click <strong>New Custom Object</strong>, and define the <strong>Session_Speaker</strong> object as follows:</p>
+
+<ul>
+<li>Label: <strong>Session Speaker</strong></li>
+<li>Plural Label: <strong>Session Speakers</strong></li>
+<li>Object Name: <strong>Session_Speaker</strong></li>
+<li>Record Name: <strong>Session Speaker Number</strong></li>
+<li>Data Type: <strong>Auto Number</strong></li>
+<li>Display Format: <strong>SESP-{00000}</strong></li>
+<li>Starting Number: <strong>1</strong></li>
+</ul></li>
+<li><p>Click <strong>Save</strong></p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>Session</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Master-Detail Relationship</strong></li>
+<li>Related To: <strong>Session</strong></li>
+<li>Field Label: <strong>Session</strong></li>
+<li>Field Name: <strong>Session</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Next</strong>, set the Related List Label to &quot;<strong>Speakers</strong>&quot; and click <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Speaker</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Master-Detail Relationship</strong></li>
+<li>Related To: <strong>Speaker</strong></li>
+<li>Field Label: <strong>Speaker</strong></li>
+<li>Field Name: <strong>Speaker</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Next</strong>, set the Related List Label to &quot;<strong>Sessions</strong>&quot; and click <strong>Save</strong></p></li>
+</ol>
+
+<h3>Step 4: Examine the Data Model in Schema Builder</h3>
+
+<ol>
+<li><p>In Setup mode, search for &quot;<strong>schema</strong>&quot; in the left navigation, and click <strong>Schema Builder</strong></p>
+
+<p><img src="images/search-schema.jpg" alt=""></p></li>
+<li><p>Click <strong>Clear All</strong></p></li>
+<li><p>Check <strong>Session</strong>, <strong>Speaker</strong>, and <strong>Session Speaker</strong></p></li>
+<li><p>Examine the MyConference data model. Rearrange the objects as needed.</p></li>
+</ol>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-a-Developer-Edition-Account.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Creating-the-Application.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

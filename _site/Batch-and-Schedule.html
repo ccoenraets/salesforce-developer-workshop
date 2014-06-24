@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 12&#58; Batch and Schedule</h1>
+        <hr/>
+        <p>In this module, you create and execute a batch process to send reminder emails to the conference speakers.</p>
+
+<h3>Step 1: Create the Batch Class</h3>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>, specify <strong>SendReminderEmail</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Make the class <strong>global</strong>, implement the <strong>Batchable</strong> interface, and define the three methods of the interface:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global class SendReminderEmail implements Database.Batchable&lt;sObject&gt; {
+
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+
+    }
+
+    global void execute(Database.BatchableContext bc, List&lt;Speaker__c&gt; scope) {
+
+    }
+
+    global void finish(Database.BatchableContext bc) {
+
+    }
+
+}
+</code></pre></div></li>
+<li><p>Declare three instance variables to store the query, the email subject, and the email body:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global String query;
+global String subject;
+global String body;
+</code></pre></div></li>
+<li><p>Define a <strong>constructor</strong> implemented as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global SendReminderEmail(String query, String subject, String body) {
+    this.query = query;
+    this.subject = subject;
+    this.body = body;
+}
+</code></pre></div></li>
+<li><p>Implement the <strong>start()</strong> method as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global Database.QueryLocator start(Database.BatchableContext bc) {
+    return Database.getQueryLocator(query);
+}
+</code></pre></div></li>
+<li><p>Implement the <strong>execute()</strong> method as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">global void execute(Database.BatchableContext bc, List&lt;Speaker__c&gt; scope) {
+    for (Speaker__c speaker : scope) {
+        EmailManager.sendMail(speaker.Email__c, this.subject, this.body);
+    }
+}
+</code></pre></div></li>
+<li><p>Save the file.</p></li>
+</ol>
+
+<h3>Step 2: Run the Batch</h3>
+
+<ol>
+<li><p>Make sure you have assigned your own email address to one of the speakers</p></li>
+<li><p>In the Developer Console, click <strong>Debug</strong> &gt; <strong>Open Execute Anonymous Window</strong></p></li>
+<li><p>Type the following Apex code:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">String q = &#39;SELECT First_Name__c, Last_Name__c, Email__c FROM Speaker__c WHERE Email__c != null&#39;;
+SendReminderEmail batch = new SendReminderEmail(q, &#39;Final Reminder&#39;, &#39;The conference starts next Monday&#39;);
+Database.executeBatch(batch);
+</code></pre></div></li>
+<li><p>Click <strong>Execute</strong></p></li>
+<li><p>Check your email</p></li>
+</ol>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Testing.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

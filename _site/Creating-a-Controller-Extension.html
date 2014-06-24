@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+    <title>Salesforce Developer Workshop</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Salesforce Developer Workshop</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li><a href="index.html">Home</a></li>-->
+                <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                        <!--<li><a href="#">Action</a></li>-->
+                    <!--</ul>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/ccoenraets/salesforce-developer-workshop">GitHub Project</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+    <div class="col-xs-12 col-sm-8">
+        <h1>Module 8&#58; Creating a Controller Extension</h1>
+        <hr/>
+        <p>In this module, you enhance the Visualforce page you built in module 7: you create a controller extension that allows users to upload speaker pictures.</p>
+
+<p><img src="images/upload.jpg" alt=""></p>
+
+<h3>Step 1: Create a Controller extension</h3>
+
+<p>In this step, you experiment with the mechanics of a controller extension. You create a simple controller extension that exposes an <strong>increment()</strong> method and a <strong>counter</strong> property. When you click the Increment button in the SpeakerForm page, the extension&#39;s increment() method increments the counter property whose new value is automatically displayed in the page. In the next step, you make SpeakerControllerExtension a lot more useful by adding code to support the upload of speaker pictures.</p>
+
+<ol>
+<li><p>In the Developer Console, select <strong>File</strong> &gt; <strong>New</strong> &gt; <strong>Apex Class</strong>, specify <strong>SpeakerControllerExtension</strong> as the class name and click <strong>OK</strong></p></li>
+<li><p>Implement the class as follows:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public class SpeakerControllerExtension {
+
+    public Integer counter {get; set;}
+
+    private final Speaker__c speaker;
+    private ApexPages.StandardController stdController;
+
+    public SpeakerControllerExtension(ApexPages.StandardController stdController) {
+        this.speaker = (Speaker__c)stdController.getRecord();
+        this.stdController = stdController;
+        counter = 0;
+    }
+
+    public void increment() {
+        counter++;
+    }
+
+}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>In the Developer Console, open the SpeakerForm page, and add the controller extension to the page definition:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:page standardController=&quot;Speaker__c&quot; extensions=&quot;SpeakerControllerExtension&quot;&gt;
+</code></pre></div></li>
+<li><p>Add an Increment button (right after the Save button):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:commandButton action=&quot;{!increment}&quot; value=&quot;Increment&quot;/&gt;
+</code></pre></div></li>
+<li><p>Display the counter (right after &lt;/apex:pageBlock&gt;):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{!counter}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>Test the application</p>
+
+<ul>
+<li>Click the Speakers tab, select a speaker, and click <strong>Edit</strong></li>
+<li>Click the Increment button several times and watch the counter value displayed at the bottom of the page</li>
+</ul></li>
+</ol>
+
+<h3>Step 2: Extend the Data Model</h3>
+
+<p>In this step, you add two fields to the Speaker object: <strong>Picture_Path</strong> to store the location of the picture on the server, and <strong>Picture</strong>, a Formula field used to display the image in the Visualforce page.</p>
+
+<ol>
+<li><p>In <strong>Setup</strong>, select <strong>Build</strong> &gt; <strong>Create</strong> &gt; <strong>Objects</strong>, and click the <strong>Speaker</strong> link</p></li>
+<li><p>In the <strong>Custom Fields &amp; Relationships</strong> section, click <strong>New</strong>, and create a <strong>Picture_Path</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Text</strong></li>
+<li>Field Label: <strong>Picture Path</strong></li>
+<li>Length: <strong>255</strong></li>
+<li>Field Name: <strong>Picture_Path</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save &amp; New</strong></p></li>
+<li><p>Create a <strong>Picture</strong> field defined as follows:</p>
+
+<ul>
+<li>Data Type: <strong>Formula</strong></li>
+<li>Field Label: <strong>Picture</strong></li>
+<li>Field Name: <strong>Picture</strong></li>
+<li>Formula Return Type: <strong>Text</strong></li>
+<li>Formula: <strong>IMAGE(Picture&#95;Path__c, &#39;&#39;)</strong></li>
+</ul>
+
+<p>Click <strong>Next</strong>, <strong>Next</strong>, <strong>Save</strong></p></li>
+</ol>
+
+<h3>Step 3: Add Image Upload Support</h3>
+
+<ol>
+<li><p>In the Developer Console, open <strong>SpeakerControllerExtension</strong></p></li>
+<li><p>Remove the counter variable declaration, the counter variable initialization in the class constructor, and the increment() method definition</p></li>
+<li><p>Declare the following variables (right before the <strong>speaker</strong> variable declaration):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public blob picture { get; set; }
+public String errorMessage { get; set; }
+</code></pre></div></li>
+<li><p>Declare a <strong>save()</strong> method implemented as follows to override the standard controller&#39;s default behavior (right after the constructor method):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">public PageReference save() {
+    errorMessage = &#39;&#39;;
+    try {
+        upsert speaker;
+        if (picture != null) {
+            Attachment attachment = new Attachment();
+            attachment.body = picture;
+            attachment.name = &#39;speaker_&#39; + speaker.id + &#39;.jpg&#39;;
+            attachment.parentid = speaker.id;
+            attachment.ContentType = &#39;application/jpg&#39;;
+            insert attachment;
+            speaker.Picture_Path__c = &#39;/servlet/servlet.FileDownload?file=&#39;
+                                      + attachment.id;
+            update speaker;
+        }
+        return new ApexPages.StandardController(speaker).view();
+    } catch(System.Exception ex) {
+        errorMessage = ex.getMessage();
+        return null;
+    }
+}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+<li><p>In the Developer Console, open the SpeakerForm page</p></li>
+<li><p>Remove the Increment button</p></li>
+<li><p>Add an inputFile (right after the Email inputField):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">&lt;apex:inputFile value=&quot;{!picture}&quot; accept=&quot;image/*&quot; /&gt;
+</code></pre></div></li>
+<li><p>Instead of the counter, display the potential errorMessage right after &lt;/apex:pageBlock&gt;</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">{!errorMessage}
+</code></pre></div></li>
+<li><p>Save the file</p></li>
+</ol>
+
+<h3>Step 4: Test the Application</h3>
+
+<ol>
+<li><p>Click the Speakers tab</p></li>
+<li><p>Click <strong>New</strong> to add a speaker</p></li>
+<li><p>Enter the speaker first name, last name and email</p></li>
+<li><p>Click the <strong>Choose File</strong> button and select a jpg file on your file system</p></li>
+<li><p>Click the <strong>Save</strong> button: you should see the image on the speaker&#39;s details page</p></li>
+</ol>
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-a-Visualforce-Page.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Using-JavaScript-in-Visualforce-Pages.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+
+<p></div></p>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-4 right-nav">
+
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Modules</div>
+            <ol class="list-group">
+                <li><a href="Creating-a-Developer-Edition-Account.html">Creating a Developer Edition Account</a></li>
+                <li><a href="Creating-the-Data-Model.html">Creating the Data Model</a></li>
+                <li><a href="Creating-the-Application.html">Creating the Application</a></li>
+                <li><a href="Creating-an-Apex-Class.html">Creating an Apex Class</a></li>
+                <li><a href="Accessing-Data-using-SOQL-and-DML.html">Accessing Data using SOQL and DML</a></li>
+                <li><a href="Creating-Triggers.html">Creating Triggers</a></li>
+                <li><a href="Creating-a-Visualforce-Page.html">Creating a Visualforce Page</a></li>
+                <li><a href="Creating-a-Controller-Extension.html">Creating a Controller Extension</a></li>
+                <li><a href="Using-JavaScript-in-Visualforce-Pages.html">Using JavaScript in Visualforce Pages</a></li>
+                <li><a href="Using-the-Salesforce1-Platform-APIs.html">Using the Salesforce1 Platform APIs</a></li>
+                <li><a href="Testing.html">Testing</a></li>
+                <li><a href="Batch-and-Schedule.html">Batch and Schedule</a></li>
+            </ol>
+            &nbsp;
+        </div>
+<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-url="http://bit.ly/salesforce-workshop" data-text="Salesforce Developer Workshop: self-paced tutorial to learn how to develop on the #Salesforce Platform">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="container">
+    <div id="footer">
+        <p class="text-muted">Salesforce Developer Workshop, 2014.</p>
+    </div>    <!-- Site footer -->
+</div>
+
+
+<script src="lib/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
