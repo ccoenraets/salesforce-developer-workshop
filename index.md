@@ -30,7 +30,7 @@ aspects of a conference: sessions, speakers, hotels, etc. You also create a simp
 
 ### Browser Requirements
 
-The following browsers are supported to work with the Developer Console:
+The following browsers are supported when working with the Developer Console:
 
   - Most recent version of Google Chrome
   - Most recent version of Mozilla Firefox
