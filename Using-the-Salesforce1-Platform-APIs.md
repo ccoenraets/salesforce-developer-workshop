@@ -8,13 +8,21 @@ In this module, you create an application that runs outside your Salesforce inst
 
 ### Requirement
 
-You need Node.js to perform the exercises this module. If you don't already have Node.js installed on your system, you can install it [here](http://nodejs.org/).
+You need Node.js to perform the exercises in this module. If you don't already have Node.js installed on your system, you can install it [here](http://nodejs.org/).
+
+> This module is recommended but optional. If you are not interested in building custom applications (applications hosted outside your Salesforce instance), you can move to Module 11.
 
 ### Step 1: Create a Connected App
 
 1. In Setup, click **Build** > **Create** > **Apps**
 
-1. In the Connected Apps section, click **New**, and define the Connected App as follows:
+1. In the **Connected Apps** section, click **New**, and define the Connected App as follows:
+  - Connected App Name: MyConference
+  - API Name: MyConference
+  - Contact Email: enter your email address
+  - Enabled OAuth Settings: Checked
+  - Callback URL: http://localhost:3000/oauthcallback.html
+  - Selected OAuth Scopes: Full Access (full)
 
     ![](images/connected-app.jpg)
 
@@ -27,16 +35,16 @@ You need Node.js to perform the exercises this module. If you don't already have
 
 1. Using your favorite code editor, examine the code in **client/index.html**:
     - It provides the basic markup to render a list of sessions as shown in the screenshot above.
-    - It uses the ratchet.css. [Ratchet](http://goratchet.com/) is a simple CSS toolkit that provides styles for mobile applications.
-    - It uses [ForceTK](https://github.com/developerforce/Force.com-JavaScript-REST-Toolkit), the Force.com JavaScript REST Toolkit, to integrate with Salesforce. 
+    - It uses ratchet.css. [Ratchet](http://goratchet.com/) is a simple CSS toolkit that provides styles for mobile applications.
+    - It uses [ForceTK](https://github.com/developerforce/Force.com-JavaScript-REST-Toolkit), the Force.com JavaScript REST Toolkit, to integrate with Salesforce.
     - You will code the logic of the application (OAuth login) and data access logic in js/app.js which is empty at this time.  
 
 1. Using your favorite code editor, examine the code in **client/oauthcallback.html**:
-    
-    At the end of the OAuth workflow, the Salesforce authentication process loads the redirect URI you specified in your Connected App and passes the access token and other OAuth values (server instance, refresh token, etc.) in the query string. Your redirect URI page simply needs to parse the query string, extract the access token and the other OAuth values, and pass that information back to your application by invoking the oauthCallback() function you will code in Step 4.    
-    
+
+    At the end of the OAuth workflow, the Salesforce authentication process loads the redirect URI you specified in your Connected App and passes the access token and other OAuth values (server instance, refresh token, etc.) in the query string. Your redirect URI page simply needs to parse the query string, extract the access token and the other OAuth values, and pass that information back to your application by invoking the oauthCallback() function you will code in Step 4.
+
 1. Using your favorite code editor, examine the code in **server.js**. server.js implements a small HTTP server that provides two features:
-    - Web server for static content. The document root for the web server is the client directory. 
+    - Web server for static content. The document root for the web server is the client directory.
     - Proxy for Salesforce REST requests. Because of the browser’s cross-origin restrictions, your JavaScript application hosted on your own server (or localhost) will not be able to make API calls directly to the *.salesforce.com domain. The solution is to proxy your API calls through your own server.
 
 ### Step 3: Start the Node.js server
@@ -44,7 +52,7 @@ You need Node.js to perform the exercises this module. If you don't already have
 
 1. Open Terminal (Mac) or a Command prompt (Windows)
 
-1. Navigate to the **salesforce-developer-workshop** (or salesforce-developer-workshop-master) directory
+1. Navigate (cd) to the **salesforce-developer-workshop** (or salesforce-developer-workshop-master) directory
 
 1. Install the Node.js server dependencies:
 
@@ -83,9 +91,11 @@ You need Node.js to perform the exercises this module. If you don't already have
 
 1. In **Setup** (back in Salesforce), click **Build** > **Create** > **Apps**. In the **Connected Apps** section, click **MyConference**, and copy the **Consumer Key** to your clipboard.
 
+  ![](images/consumer-key.jpg)
+
 1. In app.js, replace YOUR&#95;CONSUMER_KEY with the consumer key you copied to your clipboard
 
-1. Declare a function named **login()** implemented as follows:
+1. In app.js, declare a function named **login()** implemented as follows (right after the variable declarations):
 
     ```
     function login() {
@@ -96,13 +106,13 @@ You need Node.js to perform the exercises this module. If you don't already have
     }
     ```
 
-1. Declare a function named **oauthCallback()** implemented as follows:
+1. Declare a function named **oauthCallback()** implemented as follows (right after the login() function):
 
     ```
     function oauthCallback(response) {
         if (response && response.access_token) {
-            client.setSessionToken(response.access_token, 
-                                   apiVersion, 
+            client.setSessionToken(response.access_token,
+                                   apiVersion,
                                    response.instance_url);
             console.log('OAuth authentication succeeded');
         } else {
@@ -110,7 +120,7 @@ You need Node.js to perform the exercises this module. If you don't already have
         }
     }
     ```
-    
+
     > oauthCallback() is called by the oauthcallback.html page at the end of the OAuth workflow (see oauthcallback.html in step 2 for details).
 
 1. Invoke the login() function as the last line of the app.js file:
@@ -120,15 +130,15 @@ You need Node.js to perform the exercises this module. If you don't already have
   ```
 
 1. Test the application
-  - Open a browser and access http://localhost:3000
+  - Open a browser and access [http://localhost:3000](http://localhost:3000)
   - Login with your Developer Edition credentials
   - Open the browser console: you should see the **OAuth authentication succeeded** message
 
-  > It may take a few minutes for a Connected App to be available after you create it. If you get an this message: error=invalid_client_id&error_description=client%20identifier%20invalid, wait a few minutes and try again. 
+  > It may take a few minutes for a Connected App to be available after you create it. If you get this message: **error=invalid_client_id&error_description=client%20identifier%20invalid**, wait a few minutes and try again.
 
 ### Step 5: Using the REST APIs
 
-1. In app.js, declare a function named **getSessions()** implemented as follows:
+1. In app.js, declare a function named **getSessions()** implemented as follows (right after the oauthCallback() function):
 
     ```
     function getSessions() {
@@ -157,6 +167,17 @@ You need Node.js to perform the exercises this module. If you don't already have
   ```
 
 1. Test the application
-  - Open a browser and access http://localhost:3000
+  - Open a browser and access [http://localhost:3000](http://localhost:3000)
   - Login with your Developer Edition credentials
   - You should now see the list of sessions
+
+> This is just the starting point for building a custom application written in JavaScript, authenticating with Salesforce using OAuth, and accessing Salesforce data using the REST APIs. If you are planning on building a real-life application based on this architecture, consider using a JavaScript framework such as [Backbone.js](http://backbonejs.org/) or [AngularJS](https://angularjs.org/) with [Ionic](http://ionicframework.com/).
+
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Using-JavaScript-in-Visualforce-Pages.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Testing.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>

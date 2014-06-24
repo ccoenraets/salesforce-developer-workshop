@@ -16,7 +16,7 @@ In this module, you create an EmailManager class that encapsulates the logic to 
 
     ```
     public class EmailManager{
-    
+
         public void sendMail(String address, String subject, String body) {
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             String[] toAddresses = new String[] {address};
@@ -25,7 +25,7 @@ In this module, you create an EmailManager class that encapsulates the logic to 
             mail.setPlainTextBody(body);
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
         }
-    
+
     }
     ```
 
@@ -42,7 +42,7 @@ In this module, you test the EmailManager class by sending an email from the dev
   ```
   String address = 'YOUR_EMAIL_ADDRESS';
   String subject = 'Speaker Confirmation';
-  String body = 'Thank you for being a speaker.';
+  String body = 'Thank you for speaking at the conference.';
   EmailManager em = new EmailManager();
   em.sendMail(address, subject, body);
   ```
@@ -73,8 +73,16 @@ Since EmailManager is a utility class that doesn't work with instance-specific v
   ```
   String address = 'YOUR_EMAIL_ADDRESS';
   String subject = 'Speaker Confirmation';
-  String body = 'Thank you for being a speaker.';
+  String body = 'Thank you for speaking at the conference.';
   EmailManager.sendMail(address, subject, body);
   ```
 
 5. Click **Execute** and check your email
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-the-Application.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Accessing-Data-using-SOQL-and-DML.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>

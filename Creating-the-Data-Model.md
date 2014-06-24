@@ -59,7 +59,7 @@ In this module, you create the custom objects that make up the data model for th
 
 ### Step 2: Create the Speaker Object
 
-1. In Setup, select **Build** > **Create** > **Objects**
+1. In Setup mode, select **Build** > **Create** > **Objects**
 
 1. Click **New Custom Object**, and define the Speaker object as follows (accept the default values for the properties that are not mentioned below):
   - Label: **Speaker**
@@ -106,7 +106,7 @@ In this module, you create the custom objects that make up the data model for th
 
 The Session_Speaker object is used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions.
 
-1. In Setup, select **Build** > **Create** > **Objects**
+1. In Setup mode, select **Build** > **Create** > **Objects**
 
 1. Click **New Custom Object**, and define the **Session_Speaker** object as follows:
   - Label: **Session Speaker**
@@ -137,7 +137,7 @@ The Session_Speaker object is used to model the many-to-many relationship betwee
 
 ### Step 4: Examine the Data Model in Schema Builder
 
-1. In Setup, search for "**schema**" in the left navigation, and click **Schema Builder**
+1. In Setup mode, search for "**schema**" in the left navigation, and click **Schema Builder**
 
   ![](images/search-schema.jpg)
 
@@ -146,3 +146,11 @@ The Session_Speaker object is used to model the many-to-many relationship betwee
 1. Check **Session**, **Speaker**, and **Session Speaker**
 
 1. Examine the MyConference data model. Rearrange the objects as needed.
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-a-Developer-Edition-Account.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Creating-the-Application.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>

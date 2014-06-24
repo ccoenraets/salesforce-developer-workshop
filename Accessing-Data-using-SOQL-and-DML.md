@@ -2,19 +2,23 @@
 layout: module
 title: Module 5&#58; Accessing Data using SOQL and DML
 ---
-SOQL is the Salesforce Object Query Language. It's the language you use to retrieve data in Salesforce, and it's similar to SQL.
-You use the Salesforce Data Manipulation Language (DML) to insert, update and delete data. In this module, you use the Developer Console to familiarize yourself with SOQL 
+SOQL is the Salesforce Object Query Language. It is the language you use to retrieve data in Salesforce, and it's similar to SQL.
+You use the Salesforce Data Manipulation Language (DML) to insert, update and delete data. In this module, you use the Developer Console to familiarize yourself with SOQL
 and DML. In the next modules, you'll use SOQL and DML statements in Apex classes and triggers.
 
 ### Step 1: Execute SOQL statements
 
-1. In the Developer Console, click the **Query Editor** tab at the bottom of the window, and execute the following statements to retrieve conference sessions:
+1. In the Developer Console, click the **Query Editor** tab at the bottom of the window
+
+    ![](images/queryeditor.jpg)
+
+1. Enter the following SOQL statement and click the **Execute** button to retrieve conference sessions:
 
     ```
     SELECT Id, Name, Session_Date__c, Level__c FROM Session__c
     ```
-  
-1. Execute the following statements to retrieve the beginner sessions (assuming you created any):  
+
+1. Execute the following statement to retrieve the beginner sessions (assuming you created any):  
 
     ```
     SELECT Id, Name, Session_Date__c, Level__c FROM Session__c
@@ -52,6 +56,9 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
   insert session;
   ```
 
+  You can execute a SOQL statement in the Query Editor as described above to make sure the session was created.
+
+
 1. Execute the following statements to update a session:
 
   ```
@@ -63,3 +70,11 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
 ### Additional Resources
 
 - [SOQL and SOSL Reference](http://www.salesforce.com/us/developer/docs/soql_sosl/index_Left.htm)
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-an-Apex-Class.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Creating-Triggers.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>

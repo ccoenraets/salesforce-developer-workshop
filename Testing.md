@@ -13,30 +13,30 @@ In this module, you write tests for the RejectDoubleBooking trigger you created 
     ```
     @isTest
     private class TestRejectDoubleBooking{
-    
+
     }
     ```
 
 ### Step 2: Add a Test Method to Test Single Bookings
 
-1. Add a **TestSingleBooking()** method to make sure the trigger does not prevent a valid speaker booking:
+1. Add a **TestSingleBooking()** method to the TestRejectDoubleBooking class to make sure the trigger does not prevent a valid speaker booking:
 
     ```
     static testmethod void TestSingleBooking() {
         Datetime now = System.now();
-        
+
         Speaker__c speaker = new Speaker__c(First_Name__c='John', Last_Name__c='Smith');
         insert speaker;
-        
+
         Session__c session = new Session__c(Name='Some Session', Session_Date__c=now);
         insert session;
-        
-        Session_Speaker__c assignment = 
+
+        Session_Speaker__c assignment =
             new Session_Speaker__c(Session__c=session.Id, Speaker__c=speaker.Id);
         Test.startTest();
         Database.SaveResult result = Database.insert(assignment, false);
         Test.stopTest();
-        
+
         System.assert(result.isSuccess());
     }
     ```
@@ -52,30 +52,30 @@ In this module, you write tests for the RejectDoubleBooking trigger you created 
 
 ### Step 3: Add a Test Method to Test Double Bookings
 
-1. Add a **TestDoubleBooking()** method to make sure trigger actually rejects double bookings:
+1. Add a **TestDoubleBooking()** method to the TestRejectDoubleBooking class to make sure trigger actually rejects double bookings:
 
     ```
     static testmethod void TestDoubleBooking() {
         Datetime now = System.now();
-        
+
         Speaker__c speaker = new Speaker__c(First_Name__c='John', Last_Name__c='Smith');
         insert speaker;
-        
+
         Session__c session1 = new Session__c(Name='Session 1', Session_Date__c=now);
         insert session1;
         Session__c session2 = new Session__c(Name='Session 2', Session_Date__c=now);
         insert session2;
-        
-        Session_Speaker__c assignment1 = 
+
+        Session_Speaker__c assignment1 =
             new Session_Speaker__c(Session__c=session1.Id, Speaker__c=speaker.Id);
         insert assignment1;
-        
-        Session_Speaker__c assignment2 = 
+
+        Session_Speaker__c assignment2 =
             new Session_Speaker__c(Session__c=session2.Id, Speaker__c=speaker.Id);
         Test.startTest();
         Database.SaveResult result = Database.insert(assignment2, false);
         Test.stopTest();
-        
+
         System.assert(!result.isSuccess());
     }
     ```
@@ -87,3 +87,12 @@ In this module, you write tests for the RejectDoubleBooking trigger you created 
 1. Click the **Tests** tab at the bottom of the code editor, and examine the test results.
 
     ![](images/test2.jpg)
+
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Using-the-Salesforce1-Platform-APIs.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Batch-and-Schedule.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>

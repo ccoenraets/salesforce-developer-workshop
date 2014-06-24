@@ -1,6 +1,6 @@
 ---
 layout: module
-title: Module 12&#58; Batch and Schedule 
+title: Module 12&#58; Batch and Schedule
 ---
 In this module, you create and execute a batch process to send reminder emails to the conference speakers.
 
@@ -12,19 +12,19 @@ In this module, you create and execute a batch process to send reminder emails t
 
     ```
     global class SendReminderEmail implements Database.Batchable<sObject> {
-    
+
         global Database.QueryLocator start(Database.BatchableContext bc) {
-        
+
         }
-        
+
         global void execute(Database.BatchableContext bc, List<Speaker__c> scope) {
-        
+
         }
-        
+
         global void finish(Database.BatchableContext bc) {
-        
+
         }
-    
+
     }
     ```
 
@@ -77,10 +77,17 @@ In this module, you create and execute a batch process to send reminder emails t
 
     ```
     String q = 'SELECT First_Name__c, Last_Name__c, Email__c FROM Speaker__c WHERE Email__c != null';
-    SendSpeakerReminder batch = new SendSpeakerReminder(q, 'Final Reminder', 'The conference starts next Monday');
+    SendReminderEmail batch = new SendReminderEmail(q, 'Final Reminder', 'The conference starts next Monday');
     Database.executeBatch(batch);
     ```
 
 1. Click **Execute**
 
 1. Check your email
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Testing.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+</div>
+</div>

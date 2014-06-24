@@ -16,24 +16,25 @@ In this step, you experiment with the mechanics of a controller extension. You c
 
     ```
     public class SpeakerControllerExtension {
-    
+
         public Integer counter {get; set;}
-        
+
         private final Speaker__c speaker;
         private ApexPages.StandardController stdController;
-        
+
         public SpeakerControllerExtension(ApexPages.StandardController stdController) {
             this.speaker = (Speaker__c)stdController.getRecord();
             this.stdController = stdController;
             counter = 0;
         }
-        
+
         public void increment() {
             counter++;
         }
-    
+
     }
     ```
+1. Save the file
 
 1. In the Developer Console, open the SpeakerForm page, and add the controller extension to the page definition:
 
@@ -111,7 +112,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
                 attachment.parentid = speaker.id;
                 attachment.ContentType = 'application/jpg';
                 insert attachment;
-                speaker.Picture_Path__c = '/servlet/servlet.FileDownload?file=' 
+                speaker.Picture_Path__c = '/servlet/servlet.FileDownload?file='
                                           + attachment.id;
                 update speaker;
             }
@@ -154,3 +155,11 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
 1. Click the **Choose File** button and select a jpg file on your file system
 
 1. Click the **Save** button: you should see the image on the speaker's details page
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-a-Visualforce-Page.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Using-JavaScript-in-Visualforce-Pages.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>

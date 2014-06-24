@@ -2,11 +2,8 @@
 layout: home
 title: Salesforce Developer Workshop
 ---
-In this workshop, you use the Salesforce Platform to build a conference management application:
-
-- You create the **employee-facing** part of the application that allows conference administrators to manage all the
-aspects of a conference: sessions, speakers, hotels, etc.
-- You create the **consumer-facing** part of the application that allows conference attendees to view the conference schedule, and learn more about sessions and speakers.
+In this workshop, you use the Salesforce Platform to build a conference management application that allows conference administrators to manage all the
+aspects of a conference: sessions, speakers, hotels, etc. You also create a simple consumer-facing application that allows conference attendees to view the conference schedule, and learn more about sessions and speakers.
 
 ### What You Will learn
 
@@ -25,10 +22,10 @@ aspects of a conference: sessions, speakers, hotels, etc.
 
 ### Prerequisites
 
-To complete this workshop, all you need is a modern browser and a connection to the Internet.
+- To complete this workshop, all you need is a modern browser and a connection to the Internet
+- No prior knowledge of Salesforce is required
+- A working knowledge of Object-Oriented Programming is assumed
 
-
-A working knowledge of Object Oriented Programming is assumed.
 
 ### Browser Requirements
 
@@ -39,4 +36,4 @@ A working knowledge of Object Oriented Programming is assumed.
 
 ### Issues
 
-Please create a ticket [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run into a problem or if you have a recommendation to make this workshop better. 
+Please create an issue [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run into any problem or if you have a suggestion to make this workshop better.

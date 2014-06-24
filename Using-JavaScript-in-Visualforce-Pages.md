@@ -4,7 +4,7 @@ title: Module 9&#58; Using JavaScript in Visualforce Pages
 ---
 In this module, you create a custom controller with a method that returns a list of conference hotels. You create a Visualforce page that invokes that method using JavaScript Remoting, and uses the Google Maps SDK to display the hotels on a map.
 
-![](https://github.com/ccoenraets/salesforce-developer-workshop/raw/master/images/hotelmap.jpg)
+![](images/hotelmap.jpg)
 
 ### Step 1: Create the Hotel Object
 
@@ -33,12 +33,16 @@ In this module, you create a custom controller with a method that returns a list
   - In the **Custom Object Tabs** section, click **New**
   - Select the **Hotel** object and **Building** as the Tab Style Icon
   - Click **Next**, **Next**
-  - Uncheck the **Include Tab** checkbox, check the **MyConference** checkbox, and click **Save**
+  - Uncheck the **Include Tab** checkbox, check the **Conference** checkbox, and click **Save**
+
+  ![](images/hotel-tab.jpg)
 
 6. Enter a couple of hotels with location information. For example:
   - Marriott Marquis (37.785143 -122.403405)
   - Hilton Union Square (37.786164 -122.410137)
   - Hyatt (37.794157 -122.396311)
+
+  ![](images/marriott.jpg)
 
 ### Step 2: Create the HotelRemoter Controller
 
@@ -48,13 +52,13 @@ In this module, you create a custom controller with a method that returns a list
 
     ```
     global with sharing class HotelRemoter {
-    
+
         @RemoteAction
         global static List<Hotel__c> findAll() {
-            return [SELECT Id, Name, Location__Latitude__s, Location__Longitude__s 
+            return [SELECT Id, Name, Location__Latitude__s, Location__Longitude__s
                         FROM Hotel__c];
         }
-    
+
     }
     ```
 
@@ -133,7 +137,7 @@ In this module, you create a custom controller with a method that returns a list
     }
     ```
 
-1. Define the addMarker() function implemented as follows:
+1. Define the addMarker() function implemented as follows (right after the loadHotels() function):
 
     ```
     function addMarker(id, name, lat, lng) {
@@ -156,4 +160,12 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Save the file
 
-1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser
+1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser. You should now see markers on the map representing the hotels you entered in Step 1.
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-a-Controller-Extension.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
+<a href="Using-the-Salesforce1-Platform-APIs.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>
