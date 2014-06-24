@@ -1,5 +1,7 @@
 # Salesforce Developer Workshop
 
-Step-by-step tutorial for developers new to the Salesforce platform.
+Supporting files for the workshop.
 
-Work in Progress
+Ste-by-step workshop instructions are available here:
+
+[http://ccoenraets.github.io/salesforce-developer-workshop/](http://ccoenraets.github.io/salesforce-developer-workshop/)
