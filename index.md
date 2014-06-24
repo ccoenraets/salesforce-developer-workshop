@@ -37,3 +37,10 @@ aspects of a conference: sessions, speakers, hotels, etc. You also create a simp
 ### Issues
 
 Please create an issue [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run into any problem or if you have a suggestion to make this workshop better.
+
+
+<div class="row" style="margin-top:40px;">
+<div class="col-sm-12">
+<a href="Creating-a-Developer-Edition-Account.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+</div>
+</div>
