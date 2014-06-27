@@ -5,7 +5,7 @@ title: Salesforce Developer Workshop
 In this workshop, you use the Salesforce Platform to build a conference management application that allows conference administrators to manage all the
 aspects of a conference: sessions, speakers, hotels, etc. You also create a simple consumer-facing application that allows conference attendees to view the conference schedule, and learn more about sessions and speakers.
 
-### What You Will learn
+## What You Will Learn
 
 - Create Custom Objects
 - Use declarative features of the platform to create an Application, create Tabs, and optimize Page Layouts
@@ -21,14 +21,14 @@ aspects of a conference: sessions, speakers, hotels, etc. You also create a simp
 - Create Unit Tests
 - Create Batch Processes
 
-### Prerequisites
+## Prerequisites
 
 - To complete this workshop, all you need is a modern browser and a connection to the Internet
 - No prior knowledge of Salesforce is required
 - A working knowledge of Object-Oriented Programming is assumed
 
 
-### Browser Requirements
+## Browser Requirements
 
 The following browsers are supported when working with the Developer Console:
 
@@ -37,15 +37,14 @@ The following browsers are supported when working with the Developer Console:
   - Most recent version of Safari
   - Internet Explorer 9 or higher
 
-### Issues
+## Issues
 
-Please create an issue [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run into any problem or if you have a suggestion to improve this workshop.
+- Please create an issue [here](https://github.com/ccoenraets/salesforce-developer-workshop/issues) if you run 
+into any problem or if you have a suggestion to improve this workshop.
+- You can also send me a message on Twitter:
 
-
-You can also send me a message on Twitter:
-
-<a href="https://twitter.com/ccoenraets" class="twitter-follow-button" data-show-count="true" data-lang="en" data-size="large">Follow @ccoenraets</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <a href="https://twitter.com/ccoenraets" class="twitter-follow-button" data-show-count="true" data-lang="en" data-size="large">Follow @ccoenraets</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 
 <div class="row" style="margin-top:40px;">

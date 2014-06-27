@@ -6,13 +6,13 @@ In this module, you create an application that runs outside your Salesforce inst
 
 ![](images/api.jpg)
 
-### Requirement
+## Requirement
 
 You need Node.js to perform the exercises in this module. If you don't already have Node.js installed on your system, you can install it [here](http://nodejs.org/).
 
 > This module is recommended but optional. If you are not interested in building custom applications (applications hosted outside your Salesforce instance), you can move to Module 11.
 
-### Step 1: Create a Connected App
+## Step 1: Create a Connected App
 
 1. In Setup, click **Build** > **Create** > **Apps**
 
@@ -29,7 +29,7 @@ You need Node.js to perform the exercises in this module. If you don't already h
 1. Click **Save**.
 
 
-### Step 2: Install the Supporting Files
+## Step 2: Install the Supporting Files
 
 1. Download and unzip [this file](https://github.com/ccoenraets/salesforce-developer-workshop/archive/master.zip), or clone [this repository](https://github.com/ccoenraets/salesforce-developer-workshop)
 
@@ -47,7 +47,7 @@ You need Node.js to perform the exercises in this module. If you don't already h
     - Web server for static content. The document root for the web server is the client directory.
     - Proxy for Salesforce REST requests. Because of the browser’s cross-origin restrictions, your JavaScript application hosted on your own server (or localhost) will not be able to make API calls directly to the *.salesforce.com domain. The solution is to proxy your API calls through your own server.
 
-### Step 3: Start the Node.js server
+## Step 3: Start the Node.js server
 
 
 1. Open Terminal (Mac) or a Command prompt (Windows)
@@ -74,7 +74,7 @@ You need Node.js to perform the exercises in this module. If you don't already h
 
   Since we didn't authenticate with Salesforce yet, all you should see at this point is an empty list of sessions.
 
-### Step 4: Authenticate with Salesforce using OAuth
+## Step 4: Authenticate with Salesforce using OAuth
 
 1. Using your favorite code editor, open **app.js** in **salesforce-developer-workshop/client/js**
 
@@ -136,7 +136,7 @@ You need Node.js to perform the exercises in this module. If you don't already h
 
   > It may take a few minutes for a Connected App to be available after you create it. If you get this message: **error=invalid_client_id&error_description=client%20identifier%20invalid**, wait a few minutes and try again.
 
-### Step 5: Using the REST APIs
+## Step 5: Using the REST APIs
 
 1. In app.js, declare a function named **getSessions()** implemented as follows (right after the oauthCallback() function):
 

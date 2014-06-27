@@ -7,7 +7,7 @@ In this module, you create a Developer Edition Account that provides you with a 
 > If you already signed up for a Developer Edition account, you can skip the instructions below and go directly to [Module 2](/Creating-the-Data-Model.html).
 
 
-### Steps
+## Steps
 
 1. Open a browser and access the following URL: [http://developer.salesforce.com/join](http://developer.salesforce.com/join)
 

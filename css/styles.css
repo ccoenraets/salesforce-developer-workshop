@@ -1,44 +1,58 @@
+body {
+    /*font-family: source-sans-pro, sans-serif;*/
+    /*font-size: 16px;*/
+}
+
 img {
     max-width: 100%;
     border: solid 1px #eee;
+    margin: 8px 0;
 }
 
-
-
-h1{
+h1 {
     font-size: 32px;
+    font-weight: 400;
+    margin-bottom: 16px;
 }
-
 
 blockquote {
     font-size: inherit;
     line-height: inherit;
 }
+
 .btn-lg {
     border-radius: 2px;
-    background-color: #009CDF;
+    background-color: #00A1E1;
 }
 
 .jumbotron {
     margin-top: -20px;
     padding-bottom: 30px;
     padding-top: 30px;
-}
-
-.navbar {
     background-color: #01344e;
+    color: #009CDF
 }
 
-.navbar-default .navbar-nav>li>a,
-.navbar-default .navbar-brand {
-    color: #fff;
+.jumbotron h1 {
+    font-size: 34px;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.navbar-default .navbar-nav>li>a:hover,
-.navbar-default .navbar-brand:hover {
-    color: #2ac2ff;
-    color: #009CDF;
-}
+/*.navbar {*/
+/*background-color: #01344e;*/
+/*}*/
+
+/*.navbar-default .navbar-nav>li>a,*/
+/*.navbar-default .navbar-brand {*/
+/*color: #fff;*/
+/*}*/
+
+/*.navbar-default .navbar-nav>li>a:hover,*/
+/*.navbar-default .navbar-brand:hover {*/
+/*color: #2ac2ff;*/
+/*color: #009CDF;*/
+/*}*/
 
 .right-nav {
     padding-top: 20px;
@@ -52,36 +66,43 @@ blockquote {
     padding: 4px 0;
 }
 
-
 .list-group-item {
 }
 
 h3 {
-margin-top: 30px;
-margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
-li>ul {
-    margin-bottom:20px;
+li > ul {
+    margin-bottom: 20px;
 }
 
-li>ul>li {
+li > ul > li {
     margin-bottom: 10px;
 }
 
 #footer {
-    margin-top:50px;
-    padding-bottom:20px;
+    margin-top: 40px;
+    padding-bottom: 20px;
     padding-top: 20px;
     border-top: solid 1px #eee;
 }
 
 blockquote {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+h2 {
+    font-size: 24px;
+    border-bottom: solid 1px #EEE;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+    margin-top: 40px;
 }

@@ -6,7 +6,7 @@ In this module, you create the custom objects that make up the data model for th
 
 ![](images/schema.jpg)
 
-### Step 1: Create the Conference Session Object
+## Step 1: Create the Conference Session Object
 
 1. Login into your Developer Edition account
 
@@ -57,7 +57,7 @@ In this module, you create the custom objects that make up the data model for th
 
   Click **Next**, **Next**, **Save**
 
-### Step 2: Create the Speaker Object
+## Step 2: Create the Speaker Object
 
 1. In Setup mode, select **Build** > **Create** > **Objects**
 
@@ -102,7 +102,7 @@ In this module, you create the custom objects that make up the data model for th
 
   Click **Next**, **Next**, **Save**
 
-### Step 3: Create the Session_Speaker Junction Object
+## Step 3: Create the Session_Speaker Junction Object
 
 The Session_Speaker object is used to model the many-to-many relationship between Session and Speaker: a session can have one or many speakers, and a speaker can have one or many sessions. This is similar to an associative table in a traditional relational database.
 
@@ -135,7 +135,7 @@ The Session_Speaker object is used to model the many-to-many relationship betwee
 
   Click **Next**, **Next**, **Next**, set the Related List Label to "**Sessions**" and click **Save**
 
-### Step 4: Examine the Data Model in Schema Builder
+## Step 4: Examine the Data Model in Schema Builder
 
 1. In Setup mode, search for "**schema**" in the left navigation, and click **Schema Builder**
 

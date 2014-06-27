@@ -4,7 +4,7 @@ title: Module 7&#58; Creating a Visualforce Page
 ---
 In this module, you create a Visualforce page to provide a custom user interface for creating and editing speakers.
 
-### Step 1: Create the SpeakerForm Visualforce Page
+## Step 1: Create the SpeakerForm Visualforce Page
 
 1. In the **Developer Console**, select **File** > **New** > **Visualforce Page**, specify **SpeakerForm** as the page name and click **OK**
 
@@ -34,7 +34,7 @@ In this module, you create a Visualforce page to provide a custom user interface
   - Directly access the Visualforce page by appending **/apex/SpeakerForm** to your instance's domain name in the browser. For example, access: [https://na17.salesforce.com/apex/SpeakerForm](https://na17.salesforce.com/apex/SpeakerForm) (make sure you use your own Salesforce domain name)
 
 
-### Step 2: Set SpeakerForm as the Default Form
+## Step 2: Set SpeakerForm as the Default Form
 
 In this step, you set the SpeakerForm page as the default form for creating and editing speakers:
 
@@ -52,7 +52,7 @@ In this step, you set the SpeakerForm page as the default form for creating and 
 
 1. Click **Save**
 
-### Step 3: Test the Application
+## Step 3: Test the Application
 
 1. Click the Speakers Tab
 

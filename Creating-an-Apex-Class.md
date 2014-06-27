@@ -4,7 +4,7 @@ title: Module 4&#58; Creating an Apex Class
 ---
 Apex is a strongly typed, object-oriented programming language that you use to execute code in your Saleforce instance. The Apex syntax is similar to Java and also includes built-in support for database operations. In this module, you create an EmailManager class that encapsulates the logic to send confirmation emails to the conference speakers.
 
-### Step 1: Create the EmailManager class
+## Step 1: Create the EmailManager class
 
 1. In Salesforce, click your name in the upper right corner of the screen. In the dropdown menu, click **Developer Console**.
 
@@ -31,7 +31,7 @@ Apex is a strongly typed, object-oriented programming language that you use to e
 
 1. Click **File** > **Save** to save the file
 
-### Step 2: Send an Email
+## Step 2: Send an Email
 
 In this module, you test the EmailManager class by sending an email from the developer console. Later in this workshop, you'll integrate the EmailManager class with other parts of the application to automate the process of sending confirmation emails.
 
@@ -52,7 +52,7 @@ In this module, you test the EmailManager class by sending an email from the dev
 4. Check your email: you should have received the confirmation email
 
 
-### Step 3: Using a Static Method
+## Step 3: Using a Static Method
 
 Since EmailManager is a utility class that doesn't work with instance-specific variables, you can make the sendMail() method static:
 

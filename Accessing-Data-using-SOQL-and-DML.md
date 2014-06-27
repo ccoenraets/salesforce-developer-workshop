@@ -6,7 +6,7 @@ SOQL is the Salesforce Object Query Language. It is similar to SQL. You use SOQL
 You use the Salesforce Data Manipulation Language (DML) to insert, update and delete data. In this module, you use the Developer Console to familiarize yourself with SOQL
 and DML. In the next modules, you'll use SOQL and DML statements in Apex classes and triggers.
 
-### Step 1: Execute SOQL statements
+## Step 1: Execute SOQL statements
 
 1. In the Developer Console, click the **Query Editor** tab at the bottom of the window
 
@@ -44,7 +44,7 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
     ```
 
 
-### Step 2: Execute DML Statements
+## Step 2: Execute DML Statements
 
 
 1. In the Developer Console, click **Debug** > **Open Execute Anonymous Window** and execute the following statements to create a session:
@@ -68,7 +68,7 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
   Again, you can execute a SOQL statement in the Query Editor to make sure the session was updated as expected.
 
 
-### Additional Resources
+## Additional Resources
 
 - [SOQL and SOSL Reference](http://www.salesforce.com/us/developer/docs/soql_sosl/index_Left.htm)
 

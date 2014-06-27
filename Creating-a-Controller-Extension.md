@@ -6,7 +6,7 @@ In this module, you enhance the Visualforce page you built in module 7: you crea
 
 ![](images/upload.jpg)
 
-### Step 1: Create a Controller extension
+## Step 1: Create a Controller Extension
 
 In this step, you experiment with the mechanics of a controller extension. You create a simple controller extension that exposes an **increment()** method and a **counter** property. When you click the Increment button in the SpeakerForm page, the extension's increment() method increments the counter property whose new value is automatically displayed in the page. In the next step, you make SpeakerControllerExtension a lot more useful by adding code to support the upload of speaker pictures.
 
@@ -61,7 +61,7 @@ In this step, you experiment with the mechanics of a controller extension. You c
   - Click the Increment button several times and watch the counter value displayed at the bottom of the page
 
 
-### Step 2: Extend the Data Model
+## Step 2: Extend the Data Model
 
 In this step, you add two fields to the Speaker object: **Picture_Path** to store the location of the picture on the server, and **Picture**, a Formula field used to display the image in the Visualforce page.
 
@@ -85,7 +85,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
   Click **Next**, **Next**, **Save**
 
 
-### Step 3: Add Image Upload Support
+## Step 3: Add Image Upload Support
 
 1. In the Developer Console, open **SpeakerControllerExtension**
 
@@ -144,7 +144,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
 
 1. Save the file
 
-### Step 4: Test the Application
+## Step 4: Test the Application
 
 1. Click the Speakers tab
 

@@ -6,7 +6,7 @@ In this module, you create a custom controller with a method that returns a list
 
 ![](images/hotelmap.jpg)
 
-### Step 1: Create the Hotel Object
+## Step 1: Create the Hotel Object
 
 1. In **Setup**, select **Build** > **Create** > **Objects**
 
@@ -44,7 +44,7 @@ In this module, you create a custom controller with a method that returns a list
 
   ![](images/marriott.jpg)
 
-### Step 2: Create the HotelRemoter Controller
+## Step 2: Create the HotelRemoter Controller
 
 1. In the Developer Console, select **File** > **New** > **Apex Class**, specify **HotelRemoter** as the class name and click **OK**
 
@@ -64,7 +64,7 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Save the file  
 
-### Step 3: Create a Visualforce Page with Google Maps
+## Step 3: Create a Visualforce Page with Google Maps
 
 1. In the Developer Console, select **File** > **New** > **Visualforce Page**, specify **HotelMap** as the page name and click **OK**
 
@@ -106,7 +106,7 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser
 
-### Step 4: Display the Hotels on the Map
+## Step 4: Display the Hotels on the Map
 
 1. Assign **HotelRemoter** as the controller for the **HotelMap** Visualforce page:
 

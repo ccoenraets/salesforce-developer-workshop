@@ -6,7 +6,7 @@ In this module, you create Tabs to provide access to the Session and Speaker obj
 
 ![](images/app.jpg)
 
-### Step 1: Creating Tabs
+## Step 1: Creating Tabs
 
 To create the Sessions tab:
 
@@ -30,7 +30,7 @@ To create the Speakers tab:
 
 1. Uncheck the **Include Tab** checkbox to ensure the Speakers tab doesn't appear in any of the existing applications, and click **Save**
 
-### Step 2: Creating the App
+## Step 2: Creating the App
 
 A Salesforce App is a group of Tabs that makes it easy for users to access a set of related features.
 
@@ -56,7 +56,7 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
 
   > If the Conference App doesn't appear in the App Selector, you probably forgot to assign it to the System Administrator profile. In Setup, select Build > Create > App, click Edit next to Conference, check the System Administrator profile, and click Save.
 
-### Step 3: Enter Sample Data
+## Step 3: Enter Sample Data
 
 1. Click the **Speakers Tab**, click **New**, and add a few sample speakers
 
@@ -74,7 +74,7 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
 
 
 
-### Step 4: Optimize the Session Page Layout
+## Step 4: Optimize the Session Page Layout
 
 In this step, you optimize the Session details screen: to allow the user to easily identify the speakers for a session, you add the appropriate fields to the Speaker list.  
 
@@ -100,7 +100,7 @@ In this step, you optimize the Session details screen: to allow the user to easi
 
 1. Click **Save** (upper left corner)
 
-### Step 5: Optimize the Speaker Page Layout
+## Step 5: Optimize the Speaker Page Layout
 
 In this step, you optimize the Speaker details screen: to allow the user to easily identify the sessions for a speaker, you add the appropriate fields to the Session list.  
 
@@ -125,7 +125,7 @@ In this step, you optimize the Speaker details screen: to allow the user to easi
 
 1. Click **Save** (upper left corner)
 
-### Step 6: Optimize the Speaker Lookup
+## Step 6: Optimize the Speaker Lookup
 
 In this step, you optimize the Speaker lookup dialog to allow the user to easily identify speakers.  
 
@@ -141,7 +141,7 @@ In this step, you optimize the Speaker lookup dialog to allow the user to easily
 
 1. Click **Save**
 
-### Step 7: Test the Application
+## Step 7: Test the Application
 
 1. Click the Sessions tab, select a session and make sure the speaker list shows the speaker number, first name, and last name
 

@@ -5,7 +5,7 @@ title: Module 6&#58; Creating Triggers
 In this module, you create a trigger that sends confirmation emails to speakers when they are assigned to a session.
 You create another trigger that rejects double bookings of speakers.
 
-### Step 1: Create a Trigger that Sends Confirmation Emails
+## Step 1: Create a Trigger that Sends Confirmation Emails
 
 In this step, you create a trigger that sends confirmation emails to speakers when they are assigned to a session.
 
@@ -55,7 +55,7 @@ In this step, you create a trigger that sends confirmation emails to speakers wh
   > Sending a confirmation email when a speaker is assigned to a session (in other words, when a Session&#95;Speaker__c record is created) can be accomplished without writing code by defining a [workflow rule](https://developer.salesforce.com/page/Workflow_Rules). The programmatic approach used in this workshop allows you to satisfy additional requirements. For example, sending a confirmation email "on demand", independently of a record being created or updated.
 
 
-### Step 2: Create a Trigger that Rejects Double Bookings
+## Step 2: Create a Trigger that Rejects Double Bookings
 
 1. In the Developer Console, click **File** > **New** > **Apex Trigger**
 
