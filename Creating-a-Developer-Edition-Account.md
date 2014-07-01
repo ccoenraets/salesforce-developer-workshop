@@ -9,7 +9,7 @@ In this module, you create a Developer Edition Account that provides you with a 
 
 ## Steps
 
-1. Open a browser and access the following URL: [http://developer.salesforce.com/join](http://developer.salesforce.com/join)
+1. Open a browser and access the following URL: [http://developer.salesforce.com/signup](http://developer.salesforce.com/signup)
 
 2. Fill in the signup form:
   - Enter your First Name and Last Name
