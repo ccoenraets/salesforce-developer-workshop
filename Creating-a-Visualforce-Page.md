@@ -31,7 +31,7 @@ In this module, you create a Visualforce page to provide a custom user interface
 
 1. Test the Visualforce page. There are several ways you can test your Visualforce page. For example, you can:
   - Click the **Preview** button in the file editor for SpeakerForm in the developer console (upper left corner)
-  - Directly access the Visualforce page: [https://login.salesforce.com/apex/SpeakerForm](https://login.salesforce.com/apex/SpeakerForm)
+  - Directly access the Visualforce page by appending **/apex/SpeakerForm** to your instance's domain name in the browser. For example, access: [https://na17.salesforce.com/apex/SpeakerForm](https://na17.salesforce.com/apex/SpeakerForm) (make sure you use your own Salesforce domain name)
 
 
 ## Step 2: Set SpeakerForm as the Default Form
