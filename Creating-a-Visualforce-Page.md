@@ -31,12 +31,12 @@ In this module, you create a Visualforce page to provide a custom user interface
 
 1. Test the Visualforce page. There are several ways you can test your Visualforce page. For example, you can:
   - Click the **Preview** button in the file editor for SpeakerForm in the developer console (upper left corner)
-  - Directly access the Visualforce page by appending **/apex/SpeakerForm** to your instance's domain name in the browser. For example, access: [https://na17.salesforce.com/apex/SpeakerForm](https://na17.salesforce.com/apex/SpeakerForm) (make sure you use your own Salesforce domain name)
+  - Directly access the Visualforce page: [https://login.salesforce.com/apex/SpeakerForm](https://login.salesforce.com/apex/SpeakerForm)
 
 
 ## Step 2: Set SpeakerForm as the Default Form
 
-In this step, you set the SpeakerForm page as the default form for creating and editing speakers:
+In this step, you set the **SpeakerForm** page as the default form for creating and editing speakers:
 
 1. In **Setup**, select **Build** > **Create** > **Objects** and click the **Speaker** link
 
@@ -48,20 +48,20 @@ In this step, you set the SpeakerForm page as the default form for creating and 
 
 1. In the **Buttons, Links, and Actions** section, click **Edit** next to **Edit**
 
-1. Check Override With Visualforce Page, and select **SpeakerForm**
+1. In **Override With** select **Visualforce Page** and select **SpeakerForm**
 
 1. Click **Save**
 
 ## Step 3: Test the Application
 
-1. Click the Speakers Tab
+1. Click the **Speakers** Tab
 
-2. Select a speaker and click Edit: you are now editing the speaker information using your Visualforce page
+2. Click **New** which should display your Visualforce page
 
-3. Modify some data, and click Save
+3. Create a new Speaker and select **Save**
 
 > At this stage, the Visualforce page doesn't provide any additional capability compared to the default speaker form. In
-the next module, you will enhance SpeakerForm to support the upload of the speaker picture.
+the next module, you will enhance SpeakerForm to support the upload of the speaker's pictures.
 
 
 

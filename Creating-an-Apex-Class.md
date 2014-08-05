@@ -2,7 +2,7 @@
 layout: module
 title: Module 4&#58; Creating an Apex Class
 ---
-Apex is a strongly typed, object-oriented programming language that you use to execute code in your Saleforce instance. The Apex syntax is similar to Java and also includes built-in support for database operations. In this module, you create an EmailManager class that encapsulates the logic to send confirmation emails to the conference speakers.
+Apex is a statically typed, object-oriented programming language that you use to execute code in your Saleforce instance. The Apex syntax is similar to Java and also includes built-in support for database operations. In this module, you create an EmailManager class that encapsulates the logic to send confirmation emails to the conference speakers.
 
 ## Step 1: Create the EmailManager class
 
@@ -15,7 +15,7 @@ Apex is a strongly typed, object-oriented programming language that you use to e
 2. Implement the class as follows:
 
     ```
-    public class EmailManager{
+    public class EmailManager {
 
         public void sendMail(String address, String subject, String body) {
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();

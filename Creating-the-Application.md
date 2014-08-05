@@ -46,7 +46,7 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
 
 1. Add the **Sessions** and **Speakers** tabs to the **Selected Tabs** and click **Next**
 
-1. Check the **System Administrator** profile and click **Save**
+1. Check the **Visible** checkbox for **System Administrator** and click **Save**
 
   ![](images/sysadmin.jpg)
 
