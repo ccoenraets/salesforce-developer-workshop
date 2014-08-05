@@ -15,7 +15,7 @@ Apex is a strongly typed, object-oriented programming language that you use to e
 2. Implement the class as follows:
 
     ```
-    public class EmailManager{
+    public class EmailManager {
 
         public void sendMail(String address, String subject, String body) {
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();

@@ -49,23 +49,23 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
 
 1. In the Developer Console, click **Debug** > **Open Execute Anonymous Window** and execute the following statements to create a session:
 
-  ```
-  Session__c session=new Session__c(Name='Advanced Apex', Level__c='Advanced');
-  insert session;
-  ```
+    ```
+    Session__c session=new Session__c(Name='Advanced Apex', Level__c='Advanced');
+    insert session;
+    ```
 
-  You can execute a SOQL statement in the Query Editor as described in step 1 to make sure the session was created.
+    You can execute a SOQL statement in the Query Editor as described in step 1 to make sure the session was created.
 
 
-1. Execute the following statements to update a session:
+2. Execute the following statements to update a session:
 
-  ```
-  Session__c session = [SELECT Id FROM Session__c WHERE NAME='Advanced Apex'];
-  session.Level__c = 'Intermediate';
-  update session;
-  ```
+    ```
+    Session__c session = [SELECT Id FROM Session__c WHERE NAME='Advanced Apex'];
+    session.Level__c = 'Intermediate';
+    update session;
+    ```
 
-  Again, you can execute a SOQL statement in the Query Editor to make sure the session was updated as expected.
+    Again, you can execute a SOQL statement in the Query Editor to make sure the session was updated as expected.
 
 
 ## Additional Resources
