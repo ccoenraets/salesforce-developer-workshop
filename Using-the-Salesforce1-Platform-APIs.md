@@ -56,21 +56,21 @@ You need Node.js to perform the exercises in this module. If you don't already h
 
 1. Install the Node.js server dependencies:
 
-  ```
-  npm install
-  ```
+    ```
+    npm install
+    ```
 
 1. Start the server:  
 
-  ```
-  node server
-  ```
+    ```
+    node server
+    ```
 
 1. Test the application. Open a browser and access the following URL:
 
-  ```
-  http://localhost:3000
-  ```
+    ```
+    http://localhost:3000
+    ```
 
   Since we didn't authenticate with Salesforce yet, all you should see at this point is an empty list of sessions.
 
@@ -80,18 +80,18 @@ You need Node.js to perform the exercises in this module. If you don't already h
 
 1. Declare the following variables:
 
-  ```
-  var apiVersion = 'v30.0',
+    ```
+    var apiVersion = 'v30.0',
     clientId = 'YOUR_CONSUMER_KEY',
     loginUrl = 'https://login.salesforce.com/',
     redirectURI = 'http://localhost:3000/oauthcallback.html',
     proxyURL = 'http://localhost:3000/proxy/',
     client = new forcetk.Client(clientId, loginUrl, proxyURL);
-  ```
+    ```
 
 1. In **Setup** (back in Salesforce), click **Build** > **Create** > **Apps**. In the **Connected Apps** section, click **MyConference**, and copy the **Consumer Key** to your clipboard.
 
-  ![](images/consumer-key.jpg)
+    ![](images/consumer-key.jpg)
 
 1. In app.js, replace YOUR&#95;CONSUMER_KEY with the consumer key you copied to your clipboard
 
@@ -125,9 +125,9 @@ You need Node.js to perform the exercises in this module. If you don't already h
 
 1. Invoke the login() function as the last line of the app.js file:
 
-  ```
-  login();
-  ```
+    ```
+    login();
+    ```
 
 1. Test the application
   - Open a browser and access [http://localhost:3000](http://localhost:3000)
@@ -161,10 +161,10 @@ You need Node.js to perform the exercises in this module. If you don't already h
 
 1. Modify the oauthCallback() function to invoke getSessions() when the user has been successfully authenticated.
 
-  ```
-  console.log('OAuth authentication succeeded');
-  getSessions();
-  ```
+    ```
+    console.log('OAuth authentication succeeded');
+    getSessions();
+    ```
 
 1. Test the application
   - Open a browser and access [http://localhost:3000](http://localhost:3000)
