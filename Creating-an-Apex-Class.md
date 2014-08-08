@@ -60,24 +60,24 @@ Since EmailManager is a utility class that doesn't work with instance-specific v
 
 1. To turn sendMail() into a static method, change its signature as follows (add the **static** keyword):
 
-  ```
-  public static void sendMail(String address, String subject, String body) {
-  ```
+    ```
+    public static void sendMail(String address, String subject, String body) {
+    ```
 
 1. Save the file
 
-3. Go back to the **Execute Anonymous Window** (**Debug** > **Open Execute Anonymous Window**)
+1. Go back to the **Execute Anonymous Window** (**Debug** > **Open Execute Anonymous Window**)
 
-4. Modify the Apex code to invoke sendMail() using a static method call:
+1. Modify the Apex code to invoke sendMail() using a static method call:
 
-  ```
-  String address = 'YOUR_EMAIL_ADDRESS';
-  String subject = 'Speaker Confirmation';
-  String body = 'Thank you for speaking at the conference.';
-  EmailManager.sendMail(address, subject, body);
-  ```
+    ```
+    String address = 'YOUR_EMAIL_ADDRESS';
+    String subject = 'Speaker Confirmation';
+    String body = 'Thank you for speaking at the conference.';
+    EmailManager.sendMail(address, subject, body);
+    ```
 
-5. Click **Execute** and check your email
+1. Click **Execute** and check your email
 
 
 <div class="row" style="margin-top:40px;">
