@@ -78,7 +78,7 @@ In this module, you create the custom objects that make up the data model for th
   - Length: **30**
   - Field Name: **First_Name**
 
-  Click **Next**, **Next**, **Save & New**
+    Click **Next**, **Next**, **Save & New**
 
 1. Create a **Last Name** field defined as follows:
   - Data Type: **Text**

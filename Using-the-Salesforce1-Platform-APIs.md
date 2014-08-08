@@ -72,7 +72,7 @@ You need Node.js to perform the exercises in this module. If you don't already h
     http://localhost:3000
     ```
 
-  Since we didn't authenticate with Salesforce yet, all you should see at this point is an empty list of sessions.
+    Since we didn't authenticate with Salesforce yet, all you should see at this point is an empty list of sessions.
 
 ## Step 4: Authenticate with Salesforce using OAuth
 
