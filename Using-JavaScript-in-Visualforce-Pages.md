@@ -20,13 +20,13 @@ In this module, you create a custom controller with a method that returns a list
 3. Click **Save**
 
 4. In the **Custom Fields & Relationships** section, click **New**, and create a **Location** field defined as follows:
-  - Data Type: **Geolocation**
-  - Field Label: **Location**
-  - Latitude and Longitude Display Notation: **Decimal**
-  - Decimal Places: **7**
-  - Field Name: **Location**
+      - Data Type: **Geolocation**
+      - Field Label: **Location**
+      - Latitude and Longitude Display Notation: **Decimal**
+      - Decimal Places: **7**
+      - Field Name: **Location**
 
-  Click **Next**, **Next**, **Save**
+    Click **Next**, **Next**, **Save**
 
 5. Create a Tab for the Hotel object
   - In **Setup**, select **Build** > **Create** > **Tabs**
@@ -35,14 +35,14 @@ In this module, you create a custom controller with a method that returns a list
   - Click **Next**, **Next**
   - Uncheck the **Include Tab** checkbox, check the **Conference** checkbox, and click **Save**
 
-  ![](images/hotel-tab.jpg)
+    ![](images/hotel-tab.jpg)
 
 6. Enter a couple of hotels with location information. For example:
   - Marriott Marquis (37.785143 -122.403405)
   - Hilton Union Square (37.786164 -122.410137)
   - Hyatt (37.794157 -122.396311)
 
-  ![](images/marriott.jpg)
+    ![](images/marriott.jpg)
 
 ## Step 2: Create the HotelRemoter Controller
 
