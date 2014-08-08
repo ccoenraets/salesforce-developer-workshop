@@ -8,7 +8,7 @@ Apex is a strongly typed, object-oriented programming language that you use to e
 
 1. In Salesforce, click your name in the upper right corner of the screen. In the dropdown menu, click **Developer Console**.
 
-  ![](images/devconsole.jpg)
+    ![](images/devconsole.jpg)
 
 1. In the Developer Console, click **File** > **New** > **Apex Class**. Specify **EmailManager** as the class name and click **OK**
 
