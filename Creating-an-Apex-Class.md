@@ -39,13 +39,13 @@ In this module, you test the EmailManager class by sending an email from the dev
 
 2. Type the following Apex code (provide your own email address):
 
-  ```
-  String address = 'YOUR_EMAIL_ADDRESS';
-  String subject = 'Speaker Confirmation';
-  String body = 'Thank you for speaking at the conference.';
-  EmailManager em = new EmailManager();
-  em.sendMail(address, subject, body);
-  ```
+    ```
+    String address = 'YOUR_EMAIL_ADDRESS';
+    String subject = 'Speaker Confirmation';
+    String body = 'Thank you for speaking at the conference.';
+    EmailManager em = new EmailManager();
+    em.sendMail(address, subject, body);
+    ```
 
 3. Click the **Execute** button
 
