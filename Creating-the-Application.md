@@ -48,13 +48,13 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
 
 1. Check the **Visible** checkbox for **System Administrator** and click **Save**
 
-  ![](images/sysadmin.jpg)
+    ![](images/sysadmin.jpg)
 
 1. Select **Conference** in the App selector (upper right corner of the screen)
 
-  ![](images/conference-app.jpg)
+    ![](images/conference-app.jpg)
 
-  > If the Conference App doesn't appear in the App Selector, you probably forgot to assign it to the System Administrator profile. In Setup, select Build > Create > App, click Edit next to Conference, check the System Administrator profile, and click Save.
+    > If the Conference App doesn't appear in the App Selector, you probably forgot to assign it to the System Administrator profile. In Setup, select Build > Create > App, click Edit next to Conference, check the System Administrator profile, and click Save.
 
 ## Step 3: Enter Sample Data
 
@@ -66,11 +66,11 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
   - In the details view for a session, click **New Session Speaker**
   - Click the magnifier icon next to the Speaker field, select a speaker in the Speaker lookup dialog and click **Save**
 
-  ![](images/speaker-lookup.jpg)
+    ![](images/speaker-lookup.jpg)
+    
+    ![](images/session-detail.jpg)
 
-  ![](images/session-detail.jpg)
-
-  > Notice that the speaker lists in both the speaker lookup dialog and the session details page don't provide very informative data at this time. We will fix this in the next steps.
+    > Notice that the speaker lists in both the speaker lookup dialog and the session details page don't provide very informative data at this time. We will fix this in the next steps.
 
 
 
