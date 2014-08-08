@@ -20,11 +20,11 @@ In this module, you create a custom controller with a method that returns a list
 3. Click **Save**
 
 4. In the **Custom Fields & Relationships** section, click **New**, and create a **Location** field defined as follows:
-      - Data Type: **Geolocation**
-      - Field Label: **Location**
-      - Latitude and Longitude Display Notation: **Decimal**
-      - Decimal Places: **7**
-      - Field Name: **Location**
+    - Data Type: **Geolocation**
+    - Field Label: **Location**
+    - Latitude and Longitude Display Notation: **Decimal**
+    - Decimal Places: **7**
+    - Field Name: **Location**
 
     Click **Next**, **Next**, **Save**
 
@@ -70,10 +70,10 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Implement HotelMap as follows:
 
-  ```
-  <apex:page sidebar="false" showheader="false">
-
-  <head>
+    ```
+    <apex:page sidebar="false" showheader="false">
+    
+    <head>
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
@@ -82,7 +82,7 @@ In this module, you create a custom controller with a method that returns a list
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script>
     var map;
-
+    
     function initialize() {
         var mapOptions = {
             center: new google.maps.LatLng(37.784173, -122.401557),
@@ -90,17 +90,17 @@ In this module, you create a custom controller with a method that returns a list
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     }
-
+    
     google.maps.event.addDomListener(window, 'load', initialize);
-
-  </script>
-  </head>
-  <body>
+    
+    </script>
+    </head>
+    <body>
       <div id="map-canvas"/>
-  </body>
-
-  </apex:page>
-  ```
+    </body>
+    
+    </apex:page>
+    ```
 
 1. Save the file
 
@@ -110,9 +110,9 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Assign **HotelRemoter** as the controller for the **HotelMap** Visualforce page:
 
-  ```
-  <apex:page sidebar="false" showheader="false" controller="HotelRemoter">
-  ```
+    ```
+    <apex:page sidebar="false" showheader="false" controller="HotelRemoter">
+    ```
 
 1. Define a function named loadHotels() implemented as follows (right after the initilize() function):
 
@@ -154,9 +154,9 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Invoke loadHotels() as the last line of the **initialize()** function:
 
-  ```
-  loadHotels();
-  ```
+    ```
+    loadHotels();
+    ```
 
 1. Save the file
 
