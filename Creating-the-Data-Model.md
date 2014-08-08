@@ -47,7 +47,7 @@ In this module, you create the custom objects that make up the data model for th
   - Field Label: **Description**
   - Field Name: **Description**
 
-  Click **Next**, **Next**, **Save & New**
+    Click **Next**, **Next**, **Save & New**
 
 1. Create a **Level** field defined as follows:
   - Data Type: **Picklist**
