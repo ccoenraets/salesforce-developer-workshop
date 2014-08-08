@@ -73,7 +73,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
   - Length: **255**
   - Field Name: **Picture_Path**
 
-  Click **Next**, **Next**, **Save & New**
+    Click **Next**, **Next**, **Save & New**
 
 1. Create a **Picture** field defined as follows:
   - Data Type: **Formula**
@@ -82,7 +82,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
   - Formula Return Type: **Text**
   - Formula: **IMAGE(Picture&#95;Path__c, '')**
 
-  Click **Next**, **Next**, **Save**
+    Click **Next**, **Next**, **Save**
 
 
 ## Step 3: Add Image Upload Support
