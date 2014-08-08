@@ -12,11 +12,11 @@ In this module, you create the custom objects that make up the data model for th
 
 1. Click the **Setup** link (upper right corner)
 
-  ![](images/setup.jpg)
+    ![](images/setup.jpg)
 
 1. In the left navigation, select **Build** > **Create** > **Objects**
 
-  ![](images/custom-object.jpg)
+    ![](images/custom-object.jpg)
 
 1. Click **New Custom Object**, and define the Session object as follows (accept the default values for the properties that are not mentioned below):
   - Label: **Session**
@@ -25,22 +25,22 @@ In this module, you create the custom objects that make up the data model for th
   - Record Name: **Session Name**
   - Data Type: **Text**
 
-  ![](images/session-object.jpg)
+    ![](images/session-object.jpg)
 
 1. Click **Save**
 
 1. In the **Custom Fields & Relationships** section, click **New**
 
-  ![](images/new-field.jpg)
+    ![](images/new-field.jpg)
 
 1. Create a **Session Date** field defined as follows:
   - Data Type: **Date/Time**
   - Field Label: **Session Date**
   - Field Name: **Session_Date**
 
-  ![](images/session-field.jpg)
+    ![](images/session-field.jpg)
 
-  Click **Next**, **Next**, **Save & New**
+    Click **Next**, **Next**, **Save & New**
 
 1. Create a **Description** field defined as follows:
   - Data Type: **Text Area (Long)**
@@ -55,7 +55,7 @@ In this module, you create the custom objects that make up the data model for th
   - Values: **Beginner**, **Intermediate**, **Advanced** (specify each value on its own row)
   - Field Name: **Level**
 
-  Click **Next**, **Next**, **Save**
+    Click **Next**, **Next**, **Save**
 
 ## Step 2: Create the Speaker Object
 
@@ -86,21 +86,21 @@ In this module, you create the custom objects that make up the data model for th
   - Length: **30**
   - Field Name: **Last_Name**
 
-  Click **Next**, **Next**, **Save & New**
+    Click **Next**, **Next**, **Save & New**
 
 1. Create an **Email** field defined as follows:
   - Data Type: **Email**
   - Field Label: **Email**
   - Field Name: **Email**
 
-  Click **Next**, **Next**, **Save & New**
+    Click **Next**, **Next**, **Save & New**
 
 1. Create a **Bio** field defined as follows:
   - Data Type: **Text Area (Long)**
   - Field Label: **Bio**
   - Field Name: **Bio**
 
-  Click **Next**, **Next**, **Save**
+    Click **Next**, **Next**, **Save**
 
 ## Step 3: Create the Session_Speaker Junction Object
 
@@ -125,7 +125,7 @@ The Session_Speaker object is used to model the many-to-many relationship betwee
   - Field Label: **Session**
   - Field Name: **Session**
 
-  Click **Next**, **Next**, **Next**, set the Related List Label to "**Speakers**" and click **Save & New**
+    Click **Next**, **Next**, **Next**, set the Related List Label to "**Speakers**" and click **Save & New**
 
 1. Create a **Speaker** field defined as follows:
   - Data Type: **Master-Detail Relationship**
@@ -133,13 +133,13 @@ The Session_Speaker object is used to model the many-to-many relationship betwee
   - Field Label: **Speaker**
   - Field Name: **Speaker**
 
-  Click **Next**, **Next**, **Next**, set the Related List Label to "**Sessions**" and click **Save**
+    Click **Next**, **Next**, **Next**, set the Related List Label to "**Sessions**" and click **Save**
 
 ## Step 4: Examine the Data Model in Schema Builder
 
 1. In Setup mode, search for "**schema**" in the left navigation, and click **Schema Builder**
 
-  ![](images/search-schema.jpg)
+    ![](images/search-schema.jpg)
 
 1. Click **Clear All**
 
