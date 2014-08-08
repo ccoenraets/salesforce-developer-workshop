@@ -93,10 +93,10 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
 
 1. Declare the following variables (right before the **speaker** variable declaration):
 
-  ```
-  public blob picture { get; set; }
-  public String errorMessage { get; set; }
-  ```
+    ```
+    public blob picture { get; set; }
+    public String errorMessage { get; set; }
+    ```
 
 1. Declare a **save()** method implemented as follows to override the standard controller's default behavior (right after the constructor method):
 
