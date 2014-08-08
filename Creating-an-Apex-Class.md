@@ -54,7 +54,8 @@ In this module, you test the EmailManager class by sending an email from the dev
 
 ## Step 3: Using a Static Method
 
-Since EmailManager is a utility class that doesn't work with instance-specific variables, you can make the sendMail() method static:
+Since EmailManager is a utility class that doesn't use instance-specific variables, you can make the sendMail() method 
+static:
 
 1. In the Developer Console, open the EmailManager class
 
