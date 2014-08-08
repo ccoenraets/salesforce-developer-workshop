@@ -10,8 +10,8 @@ In this module, you create a Visualforce page to provide a custom user interface
 
 1. Implement SpeakerForm as follows:
 
-  ```
-  <apex:page standardController="Speaker__c">
+    ```
+    <apex:page standardController="Speaker__c">
     <apex:form >
         <apex:pageBlock title="Edit Speaker">
             <apex:pageBlockSection columns="1">
@@ -24,8 +24,8 @@ In this module, you create a Visualforce page to provide a custom user interface
             </apex:pageBlockButtons>
         </apex:pageBlock>
     </apex:form>
-  </apex:page>
-  ```
+    </apex:page>
+    ```
 
 1. Save the file
 
