@@ -60,6 +60,7 @@ static:
 1. In the Developer Console, open the EmailManager class
 
 1. To turn sendMail() into a static method, change its signature as follows (add the **static** keyword):
+
     ```
     public static void sendMail(String address, String subject, String body) {
     ```
@@ -69,6 +70,7 @@ static:
 1. Go back to the **Execute Anonymous Window** (**Debug** > **Open Execute Anonymous Window**)
 
 1. Modify the Apex code to invoke sendMail() using a static method call:
+
     ```
     String address = 'YOUR_EMAIL_ADDRESS';
     String subject = 'Speaker Confirmation';
