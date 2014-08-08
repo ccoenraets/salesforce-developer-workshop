@@ -30,11 +30,11 @@ In this module, you create and execute a batch process to send reminder emails t
 
 1. Declare three instance variables to store the query, the email subject, and the email body:
 
-  ```
-  global String query;
-  global String subject;
-  global String body;
-  ```
+    ```
+    global String query;
+    global String subject;
+    global String body;
+    ```
 
 1. Define a **constructor** implemented as follows:
 
