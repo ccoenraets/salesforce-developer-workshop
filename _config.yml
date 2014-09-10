@@ -1,3 +1,4 @@
 name: Salesforce Developer Workshop
 markdown: redcarpet
 highlighter: true
+paginate: 5
