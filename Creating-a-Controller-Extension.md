@@ -82,7 +82,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
   - Formula Return Type: **Text**
   - Formula: **IMAGE(Picture&#95;Path__c, '')**
   
-    > Make sure you use <strong>two single quotes</strong> and NOT a double quote.
+        > Make sure you use <strong>two single quotes</strong> and NOT a double quote.
 
     Click **Next**, **Next**, **Save**
 
