@@ -44,6 +44,8 @@ In this step, you create a trigger that sends confirmation emails to speakers wh
     }
     ```
 
+    > Make sure the trigger is defined to execute **after insert** on the first line of the trigger definition: you only want to send a confirmation email when the record has been successfully inserted and the record Id has been assigned.
+
     > In a real-life application, hardcoding the email message is not a recommended approach. Consider using [email templates](https://help.salesforce.com/HTViewHelpDoc?id=admin_emailtemplates.htm&language=en_US) instead.
 
 1. Save the file. The trigger takes effect as soon as you save it.
