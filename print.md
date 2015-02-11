@@ -43,11 +43,11 @@ The following browsers are supported when working with the Developer Console:
 
 
 
-# Module 1&#58; Creating a Developer Edition Account
+#Module 1&#58; Creating a Developer Edition Account
 
 In this module, you create a Developer Edition Account that provides you with a full-featured but isolated Salesforce environment to perform the exercises in this workshop.
 
-> If you already signed up for a Developer Edition account, you can skip the instructions below and go directly to [Module 2](/Creating-the-Data-Model.html).
+> If you already signed up for a Developer Edition account, you can skip the instructions below and go directly to [Module 2](Creating-the-Data-Model.html).
 
 
 ## Steps
@@ -284,7 +284,7 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
   - Click the magnifier icon next to the Speaker field, select a speaker in the Speaker lookup dialog and click **Save**
 
     ![](images/speaker-lookup.jpg)
-    
+
     ![](images/session-detail.jpg)
 
     > Notice that the speaker lists in both the speaker lookup dialog and the session details page don't provide very informative data at this time. We will fix this in the next steps.
@@ -293,7 +293,7 @@ A Salesforce App is a group of Tabs that makes it easy for users to access a set
 
 ## Step 4: Optimize the Session Page Layout
 
-In this step, you optimize the Session details screen: to allow the user to easily identify the speakers for a session, you add the appropriate fields to the Speaker list.  
+In this step, you optimize the Session details screen: to allow the user to easily identify the speakers for a session, you add the appropriate fields to the Speaker list.
 
 ![](images/session-layout.jpg)
 
@@ -319,7 +319,7 @@ In this step, you optimize the Session details screen: to allow the user to easi
 
 ## Step 5: Optimize the Speaker Page Layout
 
-In this step, you optimize the Speaker details screen: to allow the user to easily identify the sessions for a speaker, you add the appropriate fields to the Session list.  
+In this step, you optimize the Speaker details screen: to allow the user to easily identify the sessions for a speaker, you add the appropriate fields to the Session list.
 
 ![](images/speaker-layout.jpg)
 
@@ -344,7 +344,7 @@ In this step, you optimize the Speaker details screen: to allow the user to easi
 
 ## Step 6: Optimize the Speaker Lookup
 
-In this step, you optimize the Speaker lookup dialog to allow the user to easily identify speakers.  
+In this step, you optimize the Speaker lookup dialog to allow the user to easily identify speakers.
 
 ![](images/lookup.jpg)
 
@@ -425,7 +425,7 @@ In this module, you test the EmailManager class by sending an email from the dev
 
 ## Step 3: Using a Static Method
 
-Since EmailManager is a utility class that doesn't use instance-specific variables, you can make the sendMail() method 
+Since EmailManager is a utility class that doesn't use instance-specific variables, you can make the sendMail() method
 static:
 
 1. In the Developer Console, open the EmailManager class
@@ -452,6 +452,7 @@ static:
 1. Click **Execute** and check your email
 
 
+
 <!-- ------------------------------------- Module 5 ------------------------------------- -->
 
 # Module 5&#58; Accessing Data using SOQL and DML
@@ -472,7 +473,7 @@ and DML. In the next modules, you'll use SOQL and DML statements in Apex classes
     SELECT Id, Name, Session_Date__c, Level__c FROM Session__c
     ```
 
-1. Execute the following statement to retrieve the beginner sessions (assuming you created any):  
+1. Execute the following statement to retrieve the beginner sessions (assuming you created any):
 
     ```
     SELECT Id, Name, Session_Date__c, Level__c FROM Session__c
@@ -572,6 +573,8 @@ In this step, you create a trigger that sends confirmation emails to speakers wh
 
     }
     ```
+
+    > Make sure the trigger is defined to execute **after insert** on the first line of the trigger definition: you only want to send a confirmation email when the record has been successfully inserted and the record Id has been assigned.
 
     > In a real-life application, hardcoding the email message is not a recommended approach. Consider using [email templates](https://help.salesforce.com/HTViewHelpDoc?id=admin_emailtemplates.htm&language=en_US) instead.
 
@@ -778,6 +781,8 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
   - Formula Return Type: **Text**
   - Formula: **IMAGE(Picture&#95;Path__c, '')**
 
+        > Make sure you use <strong>two single quotes</strong> and NOT a double quote.
+
     Click **Next**, **Next**, **Save**
 
 
@@ -852,7 +857,6 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
 
 1. Click the **Save** button: you should see the image on the speaker's details page
 
-
 <!-- ------------------------------------- Module 9 ------------------------------------- -->
 
 # Module 9&#58; Using JavaScript in Visualforce Pages
@@ -917,7 +921,7 @@ In this module, you create a custom controller with a method that returns a list
     }
     ```
 
-1. Save the file  
+1. Save the file
 
 ## Step 3: Create a Visualforce Page with Google Maps
 
@@ -927,7 +931,7 @@ In this module, you create a custom controller with a method that returns a list
 
     ```
     <apex:page sidebar="false" showheader="false">
-    
+
     <head>
     <style type="text/css">
       html { height: 100% }
@@ -937,7 +941,7 @@ In this module, you create a custom controller with a method that returns a list
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script>
     var map;
-    
+
     function initialize() {
         var mapOptions = {
             center: new google.maps.LatLng(37.784173, -122.401557),
@@ -945,15 +949,15 @@ In this module, you create a custom controller with a method that returns a list
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     }
-    
+
     google.maps.event.addDomListener(window, 'load', initialize);
-    
+
     </script>
     </head>
     <body>
       <div id="map-canvas"/>
     </body>
-    
+
     </apex:page>
     ```
 
@@ -1017,183 +1021,104 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser. You should now see markers on the map representing the hotels you entered in Step 1.
 
-
-
 <!-- ------------------------------------- Module 10 ------------------------------------- -->
 
-# Module 10&#58; Using the Salesforce1 Platform APIs
+# Module 10&#58; Deploying an App on Heroku and Using the Salesforce REST APIs
 
-In this module, you create an application that runs outside your Salesforce instance: it uses OAuth to authenticate with Salesforce, and the REST APIs to access Salesforce data.
+In this module, you deploy and configure a Node.js application on Heroku: The application uses OAuth to authenticate with Salesforce, and the REST APIs to access Salesforce data.
 
 ![](images/api.jpg)
-
-## Requirement
-
-You need Node.js to perform the exercises in this module. If you don't already have Node.js installed on your system, you can install it [here](http://nodejs.org/).
-
-> This module is recommended but optional. If you are not interested in building custom applications (applications hosted outside your Salesforce instance), you can move to Module 11.
 
 ## Step 1: Create a Connected App
 
 1. In Setup, click **Build** > **Create** > **Apps**
 
 1. In the **Connected Apps** section, click **New**, and define the Connected App as follows:
-  - Connected App Name: MyConference
-  - API Name: MyConference
-  - Contact Email: enter your email address
-  - Enabled OAuth Settings: Checked
-  - Callback URL: http://localhost:3000/oauthcallback.html
-  - Selected OAuth Scopes: Full Access (full)
+  - Connected App Name: **MyConference**
+  - API Name: **MyConference**
+  - Contact Email: **enter your email address**
+  - Enabled OAuth Settings: **Checked**
+  - Callback URL: **http://localhost:3000/oauthcallback.html** (You'll change this later)
+  - Selected OAuth Scopes: **Full Access (full)**
 
     ![](images/connected-app.jpg)
 
-1. Click **Save**.
+1. Click **Save** and **Continue**.
 
 
-## Step 2: Install the Supporting Files
+## Step 2: Create a Heroku Account
 
-1. Download and unzip [this file](https://github.com/ccoenraets/salesforce-developer-workshop/archive/master.zip), or clone [this repository](https://github.com/ccoenraets/salesforce-developer-workshop)
+If you don't already have a Heroku account, follow the steps belowto create a free account:
 
-1. Using your favorite code editor, examine the code in **client/index.html**:
-    - It provides the basic markup to render a list of sessions as shown in the screenshot above.
+1. Open a browser and access the following URL: [https://signup.heroku.com](https://signup.heroku.com)
+
+2. Fill in the signup form and click **Create Free Account** button.
+
+3. Check your email. You will receive an activation email for your free account.
+
+4. Click the link in the activation email. Enter your new password information, and click **Set password and log in**.
+
+
+## Step 3: Familiarize Yourself with the Application
+
+1. Access [https://github.com/ccoenraets/salesforce-conference-demo](https://github.com/ccoenraets/salesforce-conference-demo)
+
+1. Click the **client** link and then the **index.html** link to examine the code in **client/index.html**:
+    - It doesn't have any HTML markup inside the body tag. The HTML is built dynamically in JavaScript in the app.js file.
     - It uses ratchet.css. [Ratchet](http://goratchet.com/) is a simple CSS toolkit that provides styles for mobile applications.
-    - It uses [ForceTK](https://github.com/developerforce/Force.com-JavaScript-REST-Toolkit), the Force.com JavaScript REST Toolkit, to integrate with Salesforce.
-    - You will code the logic of the application (OAuth login) and data access logic in js/app.js which is empty at this time.  
+    - It uses [ForceJS](https://github.com/ccoenraets/forcejs) to integrate with Salesforce.
+    - It makes an Ajax call to the server to get the Connected App Id
 
-1. Using your favorite code editor, examine the code in **client/oauthcallback.html**:
+1. Examine the code in **client/js/app.js**:
+    - It includes the basic logic to manage a single page application and generate HTML pages on the fly.
+    - The **getSessionList()** function is responsible for retrieving the list of sessions from your Salesforce instance.
+    - The **getSessionDetails()** function is responsible for retrieving the details of a specific session from your Salesforce instance.
+    - The **showSessionList()** function is responsible for generating the HTML for the session list page
+    - The **showSessionDetails()** function is responsible for generating the HTML for the session details page
+    - The **router** object is responsible for detecting hashtag changes in the URL and loading the corresponding page
 
-    At the end of the OAuth workflow, the Salesforce authentication process loads the redirect URI you specified in your Connected App and passes the access token and other OAuth values (server instance, refresh token, etc.) in the query string. Your redirect URI page simply needs to parse the query string, extract the access token and the other OAuth values, and pass that information back to your application by invoking the oauthCallback() function you will code in Step 4.
+1. Examine the code in **client/oauthcallback.html**:
 
-1. Using your favorite code editor, examine the code in **server.js**. server.js implements a small HTTP server that provides two features:
+    At the end of the OAuth workflow, the Salesforce authentication process loads the redirect URI you specified in your Connected App and passes the access token and other OAuth values (server instance, refresh token, etc.) in the query string. oauthcallback.html simply passes that information to the ForceJS library which uses it to make REST API calls to your Salesforce instance.
+
+1. Examine the code in **server.js**. server.js implements a small HTTP server that provides two features:
     - Web server for static content. The document root for the web server is the client directory.
     - Proxy for Salesforce REST requests. Because of the browser’s cross-origin restrictions, your JavaScript application hosted on your own server (or localhost) will not be able to make API calls directly to the *.salesforce.com domain. The solution is to proxy your API calls through your own server.
 
-## Step 3: Start the Node.js server
 
+## Step 4: Deploy the Application
 
-1. Open Terminal (Mac) or a Command prompt (Windows)
+1. In the repository [home page](https://github.com/ccoenraets/salesforce-conference-demo), click the **Deploy to Heroku** button
+    ![](images/heroku_deploy.png)
+    - For **App Name**, specify a name for your application. For example, if you specify awesome-conference, your application will be available at https://awesome-conference.herokuapp.com. Your app name has to be unique on the herokuapp.com domain, so you may have to try a few names before finding one that's available.
+    - For **APP_ID**, paste the consumer key of the connected app you created in step&nbsp;1.
+        ![](images/consumer_key.png)
+    - Click the **Deploy For Free** button
 
-1. Navigate (cd) to the **salesforce-developer-workshop** (or salesforce-developer-workshop-master) directory
+1. In Salesforce, go back to your Connected App (Build > Create > Apps) and adjust the OAuth Callback URL based on your Heroku app name. For example: https://awesome-conference.herokuapp.com/oauthcallback.html
+    ![](images/oauth_url.png)
 
-1. Install the Node.js server dependencies:
+     > Make sure you are using **https** and replace **awesome-conference** with your own app name.
 
-    ```
-    npm install
-    ```
+1. Click **Save** and **Continue**
 
-1. Start the server:  
+## Step 5: Test the Application
 
-    ```
-    node server
-    ```
+1. Open a browser and access your application's URL on Heroku. For example: https://awesome-conference.herokuapp.com
+    - Make sure you use **https**
+    - Replace **awesome-conference** with your own app name
+    - Your browser may block the OAuth authentication popup dialog. If that happens, make sure you enable the popup dialog.
+    - If you get an error message (error=redirect_uri_mismatch&error_description=redirect_uri%20must%20match%20configuration) in the popup dialog, wait for a few minutes and try again: the changes you made to the OAuth callback URL in the previous step take a few minutes to become available.
 
-1. Test the application. Open a browser and access the following URL:
-
-    ```
-    http://localhost:3000
-    ```
-
-    Since we didn't authenticate with Salesforce yet, all you should see at this point is an empty list of sessions.
-
-## Step 4: Authenticate with Salesforce using OAuth
-
-1. Using your favorite code editor, open **app.js** in **salesforce-developer-workshop/client/js**
-
-1. Declare the following variables:
-
-    ```
-    var apiVersion = 'v30.0',
-    clientId = 'YOUR_CONSUMER_KEY',
-    loginUrl = 'https://login.salesforce.com/',
-    redirectURI = 'http://localhost:3000/oauthcallback.html',
-    proxyURL = 'http://localhost:3000/proxy/',
-    client = new forcetk.Client(clientId, loginUrl, proxyURL);
-    ```
-
-1. In **Setup** (back in Salesforce), click **Build** > **Create** > **Apps**. In the **Connected Apps** section, click **MyConference**, and copy the **Consumer Key** to your clipboard.
-
-    ![](images/consumer-key.jpg)
-
-1. In app.js, replace YOUR&#95;CONSUMER_KEY with the consumer key you copied to your clipboard
-
-1. In app.js, declare a function named **login()** implemented as follows (right after the variable declarations):
-
-    ```
-    function login() {
-        var url = loginUrl + 'services/oauth2/authorize?display=popup&response_type=token'
-                    + '&client_id=' + encodeURIComponent(clientId)
-                    + '&redirect_uri=' + encodeURIComponent(redirectURI);
-        window.open(url);
-    }
-    ```
-
-1. Declare a function named **oauthCallback()** implemented as follows (right after the login() function):
-
-    ```
-    function oauthCallback(response) {
-        if (response && response.access_token) {
-            client.setSessionToken(response.access_token,
-                                   apiVersion,
-                                   response.instance_url);
-            console.log('OAuth authentication succeeded');
-        } else {
-            alert("AuthenticationError: No Token");
-        }
-    }
-    ```
-
-    > oauthCallback() is called by the oauthcallback.html page at the end of the OAuth workflow (see oauthcallback.html in step 2 for details).
-
-1. Invoke the login() function as the last line of the app.js file:
-
-    ```
-    login();
-    ```
-
-1. Test the application
-  - Open a browser and access [http://localhost:3000](http://localhost:3000)
-  - Login with your Developer Edition credentials
-  - Open the browser console: you should see the **OAuth authentication succeeded** message
-
-  > It may take a few minutes for a Connected App to be available after you create it. If you get this message: **error=invalid_client_id&error_description=client%20identifier%20invalid**, wait a few minutes and try again.
-
-## Step 5: Using the REST APIs
-
-1. In app.js, declare a function named **getSessions()** implemented as follows (right after the oauthCallback() function):
-
-    ```
-    function getSessions() {
-        var soql = "SELECT Id, Name, Session_Date__c FROM Session__c",
-            html = '';
-        client.query(soql,
-            function (data) {
-                var sessions = data.records;
-                for (var i=0; i<sessions.length; i++) {
-                    html += '<li class="table-view-cell">' + sessions[i].Name + '</li>';
-                }
-                $('.session-list').html(html);
-            },
-            function (error) {
-                alert("Error: " + JSON.stringify(error));
-            });
-        return false;
-    }
-    ```
-
-1. Modify the oauthCallback() function to invoke getSessions() when the user has been successfully authenticated.
-
-    ```
-    console.log('OAuth authentication succeeded');
-    getSessions();
-    ```
-
-1. Test the application
-  - Open a browser and access [http://localhost:3000](http://localhost:3000)
-  - Login with your Developer Edition credentials
-  - You should now see the list of sessions
+1. Login with your Developer Edition credentials
+1. You should now see the list of sessions
+1. Click a session to see the details
 
 > This is just the starting point for building a custom application written in JavaScript, authenticating with Salesforce using OAuth, and accessing Salesforce data using the REST APIs. If you are planning on building a real-life application based on this architecture, consider using a JavaScript framework such as [Backbone.js](http://backbonejs.org/) or [AngularJS](https://angularjs.org/) with [Ionic](http://ionicframework.com/).
 
+## Extra Credit: Running Your Own Node.js Server
+
+Follow [these](Using-the-Salesforce1-Platform-APIs.html) instructions.
 
 
 <!-- ------------------------------------- Module 11 ------------------------------------- -->
@@ -1278,14 +1203,13 @@ In this module, you write tests for the RejectDoubleBooking trigger you created 
     }
     ```
 
-1. Save the file  
+1. Save the file
 
 1. Click **Run Test** in the upper right corner of the code editor
 
 1. Click the **Tests** tab at the bottom of the code editor, and examine the test results.
 
     ![](images/test2.jpg)
-
 
 
 <!-- ------------------------------------- Module 12 ------------------------------------- -->

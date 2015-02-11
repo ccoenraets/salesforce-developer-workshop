@@ -166,6 +166,6 @@ In this module, you create a custom controller with a method that returns a list
 <div class="row" style="margin-top:40px;">
 <div class="col-sm-12">
 <a href="Creating-a-Controller-Extension.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
-<a href="Using-the-Salesforce1-Platform-APIs.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+<a href="Using-the-Salesforce1-Platform-APIs-Heroku.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
 </div>
 </div>
