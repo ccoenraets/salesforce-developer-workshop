@@ -25,7 +25,7 @@ In this module, you deploy and configure a Node.js application on Heroku: The ap
 
 ## Step 2: Create a Heroku Account
 
-If you don't already have a Heroku account, follow the steps belowto create a free account:
+If you don't already have a Heroku account, follow the steps below to create a free account:
 
 1. Open a browser and access the following URL: [https://signup.heroku.com](https://signup.heroku.com)
 
@@ -72,7 +72,7 @@ If you don't already have a Heroku account, follow the steps belowto create a fr
         ![](images/consumer_key.png)
     - Click the **Deploy For Free** button
 
-1. In Salesforce, go back to your Connected App (Build > Create > Apps) and adjust the OAuth Callback URL based on your Heroku app name. For example: https://awesome-conference.herokuapp.com/oauthcallback.html
+1. In Salesforce, go back to your Connected App (**Build** > **Create** > **Apps**), click **Edit** next to your Connected App, and adjust the OAuth Callback URL based on your Heroku app name. For example, if you specified awesome-conference as the name of your Heroku application, specify https://awesome-conference.herokuapp.com/oauthcallback.html as the OAuth URL.
     ![](images/oauth_url.png)
 
      > Make sure you are using **https** and replace **awesome-conference** with your own app name.
