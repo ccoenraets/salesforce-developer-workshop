@@ -100,6 +100,6 @@ Follow [these](Using-the-Salesforce1-Platform-APIs.html) instructions.
 <div class="row" style="margin-top:40px;">
 <div class="col-sm-12">
 <a href="Using-JavaScript-in-Visualforce-Pages.html" class="btn btn-default"><i class="glyphicon glyphicon-chevron-left"></i> Previous</a>
-<a href="Using-Static-Resources.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
+<a href="Testing.html" class="btn btn-default pull-right">Next <i class="glyphicon glyphicon-chevron-right"></i></a>
 </div>
 </div>
