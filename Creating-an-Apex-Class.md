@@ -17,7 +17,7 @@ Apex is a strongly typed, object-oriented programming language that you use to e
     ```
     public class EmailManager {
 
-        public void sendMail(String address, String subject, String body) {
+        public static void sendMail(String address, String subject, String body) {
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             String[] toAddresses = new String[] {address};
             mail.setToAddresses(toAddresses);
@@ -43,42 +43,12 @@ In this module, you test the EmailManager class by sending an email from the dev
     String address = 'YOUR_EMAIL_ADDRESS';
     String subject = 'Speaker Confirmation';
     String body = 'Thank you for speaking at the conference.';
-    EmailManager em = new EmailManager();
-    em.sendMail(address, subject, body);
+    EmailManager.sendMail(address, subject, body);
     ```
 
 3. Click the **Execute** button
 
 4. Check your email: you should have received the confirmation email
-
-
-## Step 3: Using a Static Method
-
-Since EmailManager is a utility class that doesn't use instance-specific variables, you can make the sendMail() method 
-static:
-
-1. In the Developer Console, open the EmailManager class
-
-1. To turn sendMail() into a static method, change its signature as follows (add the **static** keyword):
-
-    ```
-    public static void sendMail(String address, String subject, String body) {
-    ```
-
-1. Save the file
-
-1. Go back to the **Execute Anonymous Window** (**Debug** > **Open Execute Anonymous Window**)
-
-1. Modify the Apex code to invoke sendMail() using a static method call:
-
-    ```
-    String address = 'YOUR_EMAIL_ADDRESS';
-    String subject = 'Speaker Confirmation';
-    String body = 'Thank you for speaking at the conference.';
-    EmailManager.sendMail(address, subject, body);
-    ```
-
-1. Click **Execute** and check your email
 
 
 <div class="row" style="margin-top:40px;">

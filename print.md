@@ -388,7 +388,7 @@ Apex is a strongly typed, object-oriented programming language that you use to e
     ```
     public class EmailManager {
 
-        public void sendMail(String address, String subject, String body) {
+        public static void sendMail(String address, String subject, String body) {
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             String[] toAddresses = new String[] {address};
             mail.setToAddresses(toAddresses);
@@ -414,42 +414,12 @@ In this module, you test the EmailManager class by sending an email from the dev
     String address = 'YOUR_EMAIL_ADDRESS';
     String subject = 'Speaker Confirmation';
     String body = 'Thank you for speaking at the conference.';
-    EmailManager em = new EmailManager();
-    em.sendMail(address, subject, body);
+    EmailManager.sendMail(address, subject, body);
     ```
 
 3. Click the **Execute** button
 
 4. Check your email: you should have received the confirmation email
-
-
-## Step 3: Using a Static Method
-
-Since EmailManager is a utility class that doesn't use instance-specific variables, you can make the sendMail() method
-static:
-
-1. In the Developer Console, open the EmailManager class
-
-1. To turn sendMail() into a static method, change its signature as follows (add the **static** keyword):
-
-    ```
-    public static void sendMail(String address, String subject, String body) {
-    ```
-
-1. Save the file
-
-1. Go back to the **Execute Anonymous Window** (**Debug** > **Open Execute Anonymous Window**)
-
-1. Modify the Apex code to invoke sendMail() using a static method call:
-
-    ```
-    String address = 'YOUR_EMAIL_ADDRESS';
-    String subject = 'Speaker Confirmation';
-    String body = 'Thank you for speaking at the conference.';
-    EmailManager.sendMail(address, subject, body);
-    ```
-
-1. Click **Execute** and check your email
 
 
 
@@ -705,62 +675,8 @@ In this module, you enhance the Visualforce page you built in module 7: you crea
 
 ![](images/upload.jpg)
 
-## Step 1: Create a Controller Extension
 
-In this step, you experiment with the mechanics of a controller extension. You create a simple controller extension that exposes an **increment()** method and a **counter** property. When you click the Increment button in the SpeakerForm page, the extension's increment() method increments the counter property whose new value is automatically displayed in the page. In the next step, you make SpeakerControllerExtension a lot more useful by adding code to support the upload of speaker pictures.
-
-1. In the Developer Console, select **File** > **New** > **Apex Class**, specify **SpeakerControllerExtension** as the class name and click **OK**
-
-1. Implement the class as follows:
-
-    ```
-    public class SpeakerControllerExtension {
-
-        public Integer counter {get; set;}
-
-        private final Speaker__c speaker;
-        private ApexPages.StandardController stdController;
-
-        public SpeakerControllerExtension(ApexPages.StandardController stdController) {
-            this.speaker = (Speaker__c)stdController.getRecord();
-            this.stdController = stdController;
-            counter = 0;
-        }
-
-        public void increment() {
-            counter++;
-        }
-
-    }
-    ```
-1. Save the file
-
-1. In the Developer Console, open the SpeakerForm page, and add the controller extension to the page definition:
-
-    ```
-    <apex:page standardController="Speaker__c" extensions="SpeakerControllerExtension">
-    ```
-
-1. Add an Increment button (right after the Save button):
-
-    ```
-    <apex:commandButton action="{!increment}" value="Increment"/>
-    ```
-
-1. Display the counter (right after &lt;/apex:pageBlock>):
-
-    ```
-    {!counter}
-    ```
-
-1. Save the file
-
-1. Test the application
-  - Click the Speakers tab, select a speaker, and click **Edit**
-  - Click the Increment button several times and watch the counter value displayed at the bottom of the page
-
-
-## Step 2: Extend the Data Model
+## Step 1: Extend the Data Model
 
 In this step, you add two fields to the Speaker object: **Picture_Path** to store the location of the picture on the server, and **Picture**, a Formula field used to display the image in the Visualforce page.
 
@@ -786,50 +702,63 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
     Click **Next**, **Next**, **Save**
 
 
-## Step 3: Add Image Upload Support
+## Step 2: Create a Controller Extension
 
-1. In the Developer Console, open **SpeakerControllerExtension**
+1. In the Developer Console, select **File** > **New** > **Apex Class**, specify **SpeakerControllerExtension** as the class name and click **OK**
 
-1. Remove the counter variable declaration, the counter variable initialization in the class constructor, and the increment() method definition
-
-1. Declare the following variables (right before the **speaker** variable declaration):
+1. Implement the class as follows:
 
     ```
-    public blob picture { get; set; }
-    public String errorMessage { get; set; }
-    ```
+    public class SpeakerControllerExtension {
 
-1. Declare a **save()** method implemented as follows to override the standard controller's default behavior (right after the constructor method):
+        public blob picture { get; set; }
+        public String errorMessage { get; set; }
 
-    ```
-    public PageReference save() {
-        errorMessage = '';
-        try {
-            upsert speaker;
-            if (picture != null) {
-                Attachment attachment = new Attachment();
-                attachment.body = picture;
-                attachment.name = 'speaker_' + speaker.id + '.jpg';
-                attachment.parentid = speaker.id;
-                attachment.ContentType = 'application/jpg';
-                insert attachment;
-                speaker.Picture_Path__c = '/servlet/servlet.FileDownload?file='
-                                          + attachment.id;
-                update speaker;
+        private final Speaker__c speaker;
+        private ApexPages.StandardController stdController;
+
+        public SpeakerControllerExtension(ApexPages.StandardController stdController) {
+            this.speaker = (Speaker__c)stdController.getRecord();
+            this.stdController = stdController;
+        }
+
+        public PageReference save() {
+            errorMessage = '';
+            try {
+                upsert speaker;
+                if (picture != null) {
+                    Attachment attachment = new Attachment();
+                    attachment.body = picture;
+                    attachment.name = 'speaker_' + speaker.id + '.jpg';
+                    attachment.parentid = speaker.id;
+                    attachment.ContentType = 'application/jpg';
+                    insert attachment;
+                    speaker.Picture_Path__c = '/servlet/servlet.FileDownload?file='
+                                              + attachment.id;
+                    update speaker;
+                }
+                return new ApexPages.StandardController(speaker).view();
+            } catch(System.Exception ex) {
+                errorMessage = ex.getMessage();
+                return null;
             }
-            return new ApexPages.StandardController(speaker).view();
-        } catch(System.Exception ex) {
-            errorMessage = ex.getMessage();
-            return null;
         }
     }
     ```
 
+    > The **save()** method overrides the standard controller's default behavior.
+
+
 1. Save the file
 
-1. In the Developer Console, open the SpeakerForm page
 
-1. Remove the Increment button
+## Step 3: Modify the Visualforce page
+
+1. In the Developer Console, open the SpeakerForm page, and add the controller extension to the page definition:
+
+    ```
+    <apex:page standardController="Speaker__c" extensions="SpeakerControllerExtension">
+    ```
 
 1. Add an inputFile (right after the Email inputField):
 
@@ -837,7 +766,9 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
     <apex:inputFile value="{!picture}" accept="image/*" />
     ```
 
-1. Instead of the counter, display the potential errorMessage right after &lt;/apex:pageBlock>
+    > Make sure you use an **inputFile** and not an **inputField**
+
+1. Display the potential errorMessage right after &lt;/apex:pageBlock>
 
     ```
     {!errorMessage}
