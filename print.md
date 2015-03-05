@@ -794,7 +794,7 @@ In this step, you add two fields to the Speaker object: **Picture_Path** to stor
 
 In this module, you create a custom controller with a method that returns a list of conference hotels. You create a Visualforce page that invokes that method using JavaScript Remoting, and uses the Google Maps SDK to display the hotels on a map.
 
-![](images/hotelmap.jpg)
+![](images/hotelmap_tab.jpg)
 
 ## Step 1: Create the Hotel Object
 
@@ -828,11 +828,14 @@ In this module, you create a custom controller with a method that returns a list
     ![](images/hotel-tab.jpg)
 
 6. Enter a couple of hotels with location information. For example:
-  - Marriott Marquis (37.785143 -122.403405)
-  - Hilton Union Square (37.786164 -122.410137)
-  - Hyatt (37.794157 -122.396311)
+  - Marriott Marquis (Latitude: 37.785143 Longitude: -122.403405)
+  - Hilton Union Square (Latitude: 37.786164 Longitude: -122.410137)
+  - Hyatt (Latitude: 37.794157 Longitude: -122.396311)
+
+    > Make sure you include the minus sign when entering the longitude.
 
     ![](images/marriott.jpg)
+
 
 ## Step 2: Create the HotelRemoter Controller
 
@@ -861,13 +864,13 @@ In this module, you create a custom controller with a method that returns a list
 1. Implement HotelMap as follows:
 
     ```
-    <apex:page sidebar="false" showheader="false">
+    <apex:page>
 
     <head>
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100% }
+      #map-canvas { width:800px;height:600px; }
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script>
@@ -901,7 +904,7 @@ In this module, you create a custom controller with a method that returns a list
 1. Assign **HotelRemoter** as the controller for the **HotelMap** Visualforce page:
 
     ```
-    <apex:page sidebar="false" showheader="false" controller="HotelRemoter">
+    <apex:page controller="HotelRemoter">
     ```
 
 1. Define a function named loadHotels() implemented as follows (right after the initilize() function):
@@ -950,7 +953,18 @@ In this module, you create a custom controller with a method that returns a list
 
 1. Save the file
 
-1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser. You should now see markers on the map representing the hotels you entered in Step 1.
+1. Click the **Preview** button (upper left corner) to test the HotelMap page in the browser. You should now see markers on the map representing the hotels you entered in Step 1. Clicking a marker on the map should take you to the details page for the selected hotel.
+
+
+1. Create a Tab for the Hotel Map Visualforce Page
+  - In **Setup**, select **Build** > **Create** > **Tabs**
+  - In the **Visualforce Tabs** section, click **New**
+  - Select the **HotelMap** Visualforce Page, **Hotel Map** as the Tab Label, **Hotel_Map** as the Tab Name, and **Map** as the Tab Style Icon
+  - Click **Next**, **Next**
+  - Uncheck the **Include Tab** checkbox, check the **Conference** checkbox, and click **Save**
+  - Click the newly created **Hotel Map** tab to see the Hotel Map in your application
+
+    ![](images/hotelmap_tab.jpg)
 
 <!-- ------------------------------------- Module 10 ------------------------------------- -->
 
